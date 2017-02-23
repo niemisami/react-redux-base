@@ -1,7 +1,80 @@
+
 body {
-    background-color: #555;
+    font: 20px Montserrat, sans-serif;
+    line-height: 1.8;
+    color: #f5f6f7;
+    font-family: 'Raleway', sans-serif;
+}
+p {font-size: 16px;}
+.margin {margin-bottom: 45px;}
+.margin-0 {
+    margin:0;
+}
+.padding-0 {
+    padding: 0;
+}
+.bg-1 { 
+    background-color: #CFD8DC;
+    color: #ffffff;
+}
+.bg-2 { 
+    background-color: #474e5d; /* Dark Blue */
+    color: #ffffff;
+}
+.bg-3 { 
+    background-color: #ffffff; /* White */
+    color: #555555;
+}
+.bg-4 { 
+    background-color: #2f2f2f; /* Black Gray */
+    color: #fff;
+}
+.container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+}
+.navbar-nav  li a:hover {
+    color: #1abc9c !important;
 }
 
-.jumbotron {
-    background-color: #BBB;
+.img-portrait {
+    background-image: url(https://www.linkedin.com/mpr/mpr/p/3/005/0af/06a/0f919c6.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline;
+    display: -moz-inline-stack;
+    height: 20em;
+    width: 20em;
+    padding: 1em;
 }
+
+.top-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.project-container {
+    position: relative;
+    margin: 0 auto;
+}
+.project-title {
+    background: #050505;
+    color: #fdfdfd;
+    padding: 0.4444em 1.2em; 
+}
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+

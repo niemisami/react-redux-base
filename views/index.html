@@ -1,30 +1,107 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Theme Made By www.w3schools.com - No Copyright -->
+        <title>Portfolio Niemisami</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+    <body>
 
-<head>
-    <title>KoodiKerho</title>
+        <!-- Navbar -->
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+                    <a class="navbar-brand" href="#sami">Me</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#about">ABOUT</a></li>
+                        <li><a href="#projects">PROJECTS</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous">
+        <!-- Portrait -->
+        <div class="container-fluid bg-1 text-center" id="sami">
+            <h3 class="margin">Sami Nieminen</h3>
+            <img class="img-portrait img-responsive margin" >
+            <h3>Software developer.</h3>
+        </div>
 
-    <link href="/css/styles.css" rel="stylesheet" />
+        <!-- Basic information -->
+        <div class="container-fluid bg-2 text-center" id="about">
+            <h3 class="margin">Who am I?</h3>
+            <p>I am a software engineering student in the University of Turku who has passion for coding. My main focus has been
+            Android development which I have been practicing in work projects as well as in my spare time.</p>
+            <p>Feel free to look at my Linkedin and Github profiles.</p>
+            <a href="https://www.linkedin.fi/in/snieminen/" class="btn btn-default btn-lg" target="_blank">
+                <span class="fa fa-linkedin"></span> Linkedin
+            </a>
+            <a href="https://github.com/niemisami/" class="btn btn-default btn-lg" target="_blank">
+                <span class="fa fa-github"></span> GitHub
+            </a>
+        </div>
 
-        
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
-    <script src="/js/script.js" type="text/javascript"></script>
+        <!-- Projects -->
+        <div class="container-fluid bg-3 text-center" id="projects">    
+            <h3 class="margin">My projects</h3><br>
+            <div class="row">
 
-</head>
+                <div class="col-md-3 col-sm-6 padding-0">
+                    <div class="project-container">
+                        <div class="project-title top-left">Movies</div>
+                        <img src="/images/project_movies.jpg" class="img-responsive" alt="Image">
+                    </div>
+                </div>
 
-<body>
+                <div class="col-md-3 col-sm-6 padding-0">
+                    <div class="project-container"> 
+                        <div class="project-title top-left">DigitKoodit</div>
+                        <img src="/images/project_digit.jpg" class="img-responsive" alt="Image">
+                    </div>
+                </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 jumbotron">
-                <h1>LET'S REST IT!</h1>
+                <div class="col-sm-3 col-xs-6 padding-0">
+                    <div class="project-container"> 
+                        <div class="project-title top-left">Murkinat IRC-bot</div>
+                        <img src="/images/project_murkinat.jpg" class="img-responsive" alt="Image">
+                    </div>
+                </div>
+
+                <div class="col-sm-3 col-xs-6 padding-0">
+                    <div class="project-container"> 
+                        <div class="project-title top-left">Niemisami GitHub</div>
+                        <img src="/images/project_github.jpg" class="img-responsive" alt="Image">
+                    </div>
+                </div>
+                
             </div>
         </div>
-    </div>
-</body>
 
+        <!-- Footer -->
+        <footer class="container-fluid bg-4 text-center" id="contact">
+            <p>(c) Sami Nieminen 2017</p>
+            <a href="https://www.linkedin.com/in/snieminen/">
+                <p>Linkedin</p>
+            </a>
+            <a href="https://www.github.com/niemisami/">
+                <p>GitHub</p>
+            </a>
+        </footer>
+
+    </body>
 </html>

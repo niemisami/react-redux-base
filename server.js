@@ -5,7 +5,7 @@ app.use(express.static('public'));
 app.use(express.static('views'));
 
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3002);
 
 app.get('/', function (request, response) {
     response.sendFile('index.html');
