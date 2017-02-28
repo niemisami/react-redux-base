@@ -5,6 +5,9 @@ body {
     color: #f5f6f7;
     font-family: 'Raleway', sans-serif;
 }
+h3 {
+    color: #607D8B;
+}
 p {font-size: 16px;}
 .margin {margin-bottom: 45px;}
 .margin-0 {
@@ -61,9 +64,11 @@ p {font-size: 16px;}
 .project-container {
     position: relative;
     margin: 0 auto;
+    width: 100%;
 }
 
 .top-left {
+    clear: both;
     position: absolute;
     top: 0;
     left: 0;
