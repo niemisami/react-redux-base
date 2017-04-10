@@ -55,9 +55,13 @@ function handleRender(req, res) {
         </Provider>
       )
 
-      let title = "niemisami-redux-template"
+      const title = "niemisami-redux"
 
-      res.send(indexTemplate(html, title, stateJSONToString(preloadedState)));
+      res.send(indexTemplate({
+        html: html,
+        title: title,
+        initialState: stateJSONToString(preloadedState)
+      }));
 
 
     } else {

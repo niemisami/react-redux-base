@@ -31,8 +31,7 @@ class HomePage extends React.Component {
     render() {
         return (
             <div className="jumbotron">
-                <h1>React shit</h1>
-                <p>Shitties web framework ever!</p>
+                <h1>React-redux server side render template</h1>
                 <Link to="about" className="btn btn-primary btn-lg">Learn More</Link>
                 <Counter
                     value={this.state.value}

@@ -31,7 +31,7 @@ class AboutPage extends React.Component {
     render() {
         return (
             <div className="jumbotron">
-                <h1>React shit</h1>
+                <h1>About page</h1>
             </div>
         );
     }
