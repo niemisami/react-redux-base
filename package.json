@@ -1,6 +1,7 @@
 {
   "name": "redux-training",
-  "version": "1.0.0",
+  "author": "Sami Nieminen",
+  "version": "0.0.1",
   "description": "simple Redux sample app",
   "main": "index.js",
   "scripts": {
@@ -69,6 +70,5 @@
     "webpack-dev-middleware": "1.6.1",
     "webpack-hot-middleware": "2.10.0"
   },
-  "author": "Sami Nieminen",
-  "license": "ISC"
+  "license": "MIT"
 }
