@@ -3,10 +3,10 @@ import rootReducer from '../reducers'
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunk from 'redux-thunk';
 
-const configureStore = (preloadedState) => {
+const configureStore = (initialState) => {
     const store = createStore(
         rootReducer,
-        preloadedState,
+        initialState,
         applyMiddleware(thunk)
     )
 

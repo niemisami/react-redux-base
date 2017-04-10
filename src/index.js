@@ -11,10 +11,10 @@ import {loadHobbies} from './actions/hobbyActions';
 // import '../node_modules/toastr/build/toastr.min.css';
 
  // Grab the state from a global variable injected into the server-generated HTML
-const preloadedState = window.__PRELOADED_STATE__
+const initialState = window.__INITIAL_STATE__
 // Allow the passed state to be garbage-collected
-delete window.__PRELOADED_STATE__
-const store = configureStore(preloadedState);
+delete window.__INITIAL_STATE__
+const store = configureStore(initialState);
 
 // 1. Call dispatch on the store with an argument of this action that makes an API request
 // 2. The loadCourses() action is invoked, which makes an API call, and dispatches the loadCoursesSuccess action

@@ -13,6 +13,7 @@ import { renderToString } from 'react-dom/server'
 import counterApp from '../src/reducers';
 import configureStore from '../src/store/configureStore'
 import App from '../src/components/App';
+import indexTemplate from './assets/indexTemplate'
 
 
 import { Router, browserHistory, match, RouterContext } from 'react-router';
@@ -49,13 +50,14 @@ function handleRender(req, res) {
     } else if (renderProps) {
 
       const html = renderToString(
-        <Provider store={store}> 
-          <RouterContext {...renderProps}/>
+        <Provider store={store}>
+          <RouterContext {...renderProps} />
         </Provider>
       )
 
+      let title = "niemisami-redux-template"
 
-      res.send(renderFullPage(html, preloadedState));
+      res.send(indexTemplate(html, title, stateJSONToString(preloadedState)));
 
 
     } else {
@@ -64,31 +66,9 @@ function handleRender(req, res) {
   });
 }
 
-
-function renderFullPage(html, preloadedState) {
-  return `
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-        <title>React Training</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-    </head> 
-    <body>
-      <div id="app">${html}</div>
-              <script>
-          // WARNING: See the following for security issues around embedding JSON in HTML:
-          // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
-        </script>
-      <script src="/bundle.js"></script>
-    </body>
-  </html>
-`
+function stateJSONToString(jsonState) {
+  return JSON.stringify(jsonState).replace(/</g, '\\u003c')
 }
-
-// app.get('*', function(req, res) {
-//   res.sendFile(path.join( __dirname, '../src/index.html'));
-// });
 
 app.listen(port, function (err) {
   if (err) {
