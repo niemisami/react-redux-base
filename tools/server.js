@@ -10,7 +10,6 @@ import { createStore } from 'redux';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server'
-import counterApp from '../src/reducers';
 import configureStore from '../src/store/configureStore'
 import App from '../src/components/App';
 import indexTemplate from './assets/indexTemplate'
@@ -31,14 +30,13 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 app.use(favicon(path.join(__dirname, 'assets', 'public', 'favicon.ico')));
+app.use(express.static(path.resolve(__dirname, '../src')));
 app.use("/styles", express.static(path.join(__dirname, '..', 'src', 'styles')));
 
-app.use(handleRender);
+app.get("*", handleRender);
 
 function handleRender(req, res) {
 
-  const preloadedState = { counter: 5 };
-  const store = configureStore(preloadedState)
 
 
   match({ routes: routes, location: req.url }, function (error, redirectLocation, renderProps) {
@@ -49,18 +47,10 @@ function handleRender(req, res) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
 
-      const html = renderToString(
-        <Provider store={store}>
-          <RouterContext {...renderProps} />
-        </Provider>
-      )
-
       const title = "niemisami-redux"
 
       res.send(indexTemplate({
-        html: html,
-        title: title,
-        initialState: stateJSONToString(preloadedState)
+        title: title
       }));
 
 
