@@ -36,7 +36,7 @@ app.use(handleRender);
 
 function handleRender(req, res) {
 
-  const preloadedState = { counter: -10 };
+  const preloadedState = { counter: 5 };
   const store = configureStore(preloadedState)
 
 
