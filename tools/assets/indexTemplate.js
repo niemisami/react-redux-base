@@ -8,7 +8,9 @@ export default ({ html, title, initialState }) => {
         <html lang="en">
             <head>
                 <title>${title}</title>
+                <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+                <link rel="stylesheet" href="/styles/main.css">
             </head> 
             <body>
             <div id="app">${html}</div>
