@@ -1,8 +1,7 @@
 import * as types from '../actions/actionTypes';
-import { browserHistory } from 'react-router';
 
 
-export default function counterReducer(state = -1, action) {
+export default function counterReducer(state, action) {
 
   switch (action.type) {
     case types.INCREMENT_VALUE:
