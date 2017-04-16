@@ -98,7 +98,6 @@ export const buyProducts = (products) => (dispatch, getState) => {
         type: types.CHECKOUT_FAIL
     })
     let userId = getState().shop.userId;
-    console.log(userId);
     postPurchase(products, userId, success, failure)
 }
 

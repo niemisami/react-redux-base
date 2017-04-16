@@ -100,12 +100,9 @@ app.post('/purchase/:id', function (req, res) {
 });
 
 
-
 app.get("*", handleRender);
 
 function handleRender(req, res) {
-
-
 
   match({ routes: routes, location: req.url }, function (error, redirectLocation, renderProps) {
 
@@ -115,6 +112,7 @@ function handleRender(req, res) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
       const title = "MordorMarket2.0"
+      console.log(title);
       res.send(indexTemplate({
         title: title
       }));

@@ -99,10 +99,3 @@ export default function shopReducer(state = initialState, action) {
             return state;
     }
 }
-
-export const getProducts = state => {
-    console.log("PERKELE" + state);
-    state.products;
-}
-export const getShoppingCart = state => state.shoppingCart;
-export const getUserId = state => state.userId;

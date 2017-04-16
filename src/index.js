@@ -9,13 +9,15 @@ import routes from './routes';
 import configureStore from './store/configureStore';
 import initialState from './reducers/initialState';
 import { fetchProducts, fetchUsers } from './actions/shopActions';
+import { hasUserAuthenticated } from './actions/authActions'
 
 const store = configureStore(initialState);
 
 const history = syncHistoryWithStore(browserHistory, store);
 
+store.dispatch(hasUserAuthenticated());
+//TODO: move fetchProducts after user has logged in
 store.dispatch(fetchProducts());
-// store.dispatch(fetchUsers());
 
 render(
   <Provider store={store}>

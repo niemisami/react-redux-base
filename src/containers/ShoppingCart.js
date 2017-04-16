@@ -10,7 +10,6 @@ import {
 import { Modal } from 'react-bootstrap'
 import ProductsList from '../components/ProductsList'
 import ProductItem from '../components/ProductItem'
-import { getCartProducts } from '../reducers'
 
 
 class ShoppingCart extends Component {
