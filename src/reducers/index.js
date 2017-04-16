@@ -1,12 +1,18 @@
 import { combineReducers } from 'redux';
-import counter from './counterReducer';
-import shop from './shopReducer';
 import { routerReducer } from 'react-router-redux';
+import shop, * as fromShop from './shopReducer';
 
 const rootReducer = combineReducers({
-  counter,
   shop,
   routing: routerReducer
-})
+});
+
+export const getCartProducts = state => {
+  fromShop.getShoppingCart(state.shop);
+}
+
+export const getProducts = state => {
+  fromShop.getProducts(state.shop);
+}
 
 export default rootReducer;

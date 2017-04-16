@@ -4,11 +4,21 @@ import { browserHistory } from 'react-router';
 
 const initialState = {
     usersOnline: 0,
+    users: [],
+    userId: "",
     products: [],
     shoppingCart: [],
     shoppingCartPrice: 0.0,
-    users: [],
-    showModal: false
+    showModal: false,
+    purchaseStatus: ""
+}
+
+const resetCart = {
+    products: [],
+    shoppingCart: [],
+    shoppingCartPrice: 0.0,
+    showModal: false,
+    purchaseStatus: ""
 }
 
 const insertItem = (array, item) => {
@@ -23,9 +33,9 @@ const removeItem = (array, index) => {
 }
 const calculateShoppingCartPrice = (shoppingCart) => {
     let price = 0.0;
-    shoppingCart.map = (product) => {
-        price += product.price
-    }
+    shoppingCart.map(product => {
+        price += product.price;
+    })
     return price;
 }
 
@@ -60,10 +70,17 @@ export default function shopReducer(state = initialState, action) {
                 shoppingCart: updatedShoppingCart,
                 shoppingCartPrice: shoppingCartPrice
             })
-        case types.BUY_PRODUCTS:
+
+        case types.CHECKOUT_REQUEST:
             return Object.assign({}, state, {
-                shoppingCart: [],
-                shoppingCartPrice: 0
+                purchaseStatus: "Delivering order. Please wait"
+            })
+
+        case types.CHECKOUT_SUCCESS:
+            return resetCart;
+        case types.CHECKOUT_FAIL:
+            return Object.assign({}, state, {
+                purchaseStatus: "Purchase failed. Please try again"
             })
 
         case types.DISPLAY_CONFIRMATION_MODAL:
@@ -76,6 +93,13 @@ export default function shopReducer(state = initialState, action) {
             })
 
         default:
-            return state
+            return state;
     }
 }
+
+export const getProducts = state => {
+    console.log("PERKELE" + state);
+    state.products;
+}
+export const getShoppingCart = state => state.shoppingCart;
+export const getUserId = state => state.userId;

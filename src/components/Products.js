@@ -1,6 +1,10 @@
 import React from 'react'
 import ProductItem from './ProductItem'
 
+
+const Product = ({price, name}) => {
+    
+}
 class Products extends React.Component {
 
     constructor(props) {

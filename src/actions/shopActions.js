@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import axios from 'axios';
+import dateformat from 'dateformat';
 
 //TODO: change functions to ES6 arrow consts 
 
@@ -43,14 +44,6 @@ export function removeProductFromShoppingCart(index) {
     };
 }
 
-export function attemptToBuyProducts(userId, products) {
-    return {
-        type: types.BUY_PRODUCTS,
-        userId: userId,
-        products
-    };
-}
-
 export function displayConfirmationModal() {
     return { type: types.DISPLAY_CONFIRMATION_MODAL };
 }
@@ -63,10 +56,14 @@ export function hideConfirmationModal() {
 export const fetchProducts = () => (dispatch, getState) => {
     dispatch(requestProducts());
 
-    return axios.get('/products')
-        .then(response => response.json())
-        .then(products => {
-            dispatch(receiveProducts(products, false))
+    return axios.get('/product')
+        .then(response => {
+            if (response.status === 200) {
+                dispatch(receiveProducts(response.data.products, false))
+            } else {
+                console.log("TODO: HANDLE ERROR")
+            }
+
         }).catch(errors => {
             console.log(errors);
             dispatch(receiveProducts(errors, true))
@@ -85,4 +82,53 @@ export const fetchUsers = () => (dispatch, getState) => {
             console.log(errors);
             dispatch(receiveUsers(errors, true))
         });
+}
+
+export const checkout = (products, userId) => (dispatch, getState) => {
+    dispatch({
+        type: types.CHECKOUT_REQUEST
+    })
+    if (!products || products.length < 1 || !userId || userId < 0) {
+        dispatch({
+            type: types.CHECKOUT_FAIL
+        })
+    } else {
+        let success = dispatch({
+            type: types.CHECKOUT_SUCCESS
+        })
+        let failure = dispatch({
+            type: types.CHECKOUT_FAIL
+        })
+        buyProducts(products, userId, success, failure)
+
+    }
+}
+
+const buyProducts = (products, userId, success, failure) => {
+    // Currently the API supports bying products only one by one
+    products.map((product, index) => {
+        let now = new Date();
+        let purchase = {
+            participant_rfid: userId,
+            event: product.name,
+            date: dateformat(now, "yyyy-mm-dd"),
+            time: dateformat(now, "hh:mm:ss.l")
+        }
+
+        axios.post('/purchase', {
+            purchase: purchase
+        }
+        ).then(response => {
+            if (response.statusCode != 200) {
+                return new Promise.reject('purchase failed: ' + response.statusCode);
+            }
+            response.json().then(json => {
+                if (index === products.length - 1) {
+                    success();
+                }
+            })
+        }).catch(errors => {
+            failure();
+        });
+    });
 }
