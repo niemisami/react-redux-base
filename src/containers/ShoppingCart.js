@@ -22,7 +22,7 @@ class ShoppingCart extends Component {
     renderModal() {
         const { shoppingCart, shoppingCartPrice, showModal, hideConfirmationModal, buyProducts } = this.props;
         return (
-            <Modal show={showModal} onHide={() => hideConfirmationModal()}>
+            <Modal show={showModal} onHide={hideConfirmationModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>Kaikki valmista?</Modal.Title>
                 </Modal.Header>
@@ -30,7 +30,7 @@ class ShoppingCart extends Component {
                     <h3>Ostoksia yhteensä: <b> {shoppingCartPrice.toFixed(2)}</b></h3>
                 </Modal.Body>
                 <Modal.Footer>
-                    <button type="button" className="btn btn-alert" onClick={() => hideConfirmationModal()}>Peruuta</button>
+                    <button type="button" className="btn btn-alert" onClick={hideConfirmationModal}>Peruuta</button>
                     <button type="button" className="btn btn-success" onClick={() => buyProducts(shoppingCart)}>Osta</button>
                 </Modal.Footer>
             </Modal>

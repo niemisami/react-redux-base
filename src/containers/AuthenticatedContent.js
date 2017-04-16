@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Router, browserHistory } from 'react-router';
 import { connect } from 'react-redux'
 
@@ -28,6 +28,12 @@ class AuthenticatedContent extends React.Component {
 // using React Router, you can use `ownProps` to find the URL. Other
 // platforms (Native) or routing libraries have similar ways to find
 // the current position in the app.
+
+AuthenticatedContent.propTypes = {
+    authenticated: PropTypes.bool.isRequired,
+    children: PropTypes.node.isRequired
+}
+
 function mapStateToProps(state, ownProps) {
     return {
         authenticated: state.auth.authenticated,

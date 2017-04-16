@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import ShoppingCart from './ShoppingCart';
 import ProductsContainer from './ProductsContainer';
+import AuthBanner from '../components/AuthBanner';
 
 class MordorMarket extends Component {
 
-
   constructor(props) {
     super(props)
-  } 
+  }
 
   componentDidMount() {
 
@@ -27,9 +27,12 @@ class MordorMarket extends Component {
 
         <div className="container">
           <div className="row">
-            <div className="col-lg-6">
+            <div className="col-sm-6">
               <h1>MordorMarket 2.0</h1>
               <p>Käyttäjiä linjoilla: {0}</p>
+            </div>
+            <div className="col-sm-2">
+              <AuthBanner />
             </div>
           </div>
 

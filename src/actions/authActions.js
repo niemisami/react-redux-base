@@ -8,7 +8,8 @@ export const hasUserAuthenticated = () => dispatch => {
     if (userCookie && typeof userCookie === 'string') {
         dispatch({
             type: types.LOGIN_SUCCESS,
-            userId: userCookie
+            userId: userCookie,
+            userName: "dummy"
         })
     } else {
         dispatch({
@@ -19,11 +20,11 @@ export const hasUserAuthenticated = () => dispatch => {
 
 export const login = (userId) => dispatch => {
     cookie.save('userId', userId, { path: '/' });
-    console.log("Login");
     browserHistory.replace('/');
     dispatch({
         type: types.LOGIN_SUCCESS,
-        userId: userId
+        userId: userId,
+        userName: "dummy"
     })
 }
 

@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { addProductToShoppingCart } from '../actions/shopActions'
-import { getProducts } from '../reducers'
 import { Modal } from 'react-bootstrap'
 import ProductsList from '../components/ProductsList'
 import ProductItem from '../components/ProductItem'

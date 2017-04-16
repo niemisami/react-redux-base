@@ -25,8 +25,8 @@ class LoginPage extends React.Component {
     return (
       <div className="container-fluid">
         {authenticated ? "Authenticated" : "Not authenticated"}
-        <button type="button" onClick={() => login("RandomName")} />
-        <button type="button" onClick={() => logout()} />
+        <button className="btn btn-success "type="button" onClick={() => login("RandomName")} />
+        <button className="btn btn-alert" type="button" onClick={() => logout()} />
       </div>
     );
   }
