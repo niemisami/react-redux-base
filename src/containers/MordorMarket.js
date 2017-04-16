@@ -7,7 +7,7 @@ class MordorMarket extends Component {
 
   constructor(props) {
     super(props)
-  }
+  } 
 
   componentDidMount() {
 

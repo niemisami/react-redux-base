@@ -61,13 +61,13 @@ class ShoppingCart extends Component {
                     )}
                 </div>
 
-                < ProductsList title="Ostoskori" >
-                    {shoppingCart.map((product, index) => {
+                < ProductsList>
+                    {shoppingCart.map((product, index) =>
                         <ProductItem
                             key={index}
-                            products={product}
-                            onProductClicked={removeProductFromShoppingCart(index)} />
-                    })}
+                            product={product}
+                            onProductClicked={() => removeProductFromShoppingCart(index)} />
+                    )}
                 </ProductsList >
 
                 {this.renderModal}

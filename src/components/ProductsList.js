@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 
 const ProductsList = ({ title, children }) => (
-    <div>
-        <h2>Title</h2>
+    <div>        
+        <h2>{title}</h2>
         <table className="table table-hover">
             <thead>
                 <tr>
@@ -20,7 +20,7 @@ const ProductsList = ({ title, children }) => (
 
 ProductsList.propTypes = {
     children: PropTypes.node,
-    title: PropTypes.string.isRequired
+    title: PropTypes.string
 }
 
 export default ProductsList

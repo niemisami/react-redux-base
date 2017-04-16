@@ -14,11 +14,11 @@ const ProductItem = ({ product, onProductClicked }) => {
 }
 
 ProductItem.propTypes = {
-    product: PropTypes.arrayOf( {
+    product: PropTypes.shape( {
         name: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired
     }).isRequired,
-    onProductClicked: PropTypes.func.isRequired
+    onProductClicked: PropTypes.func
 }
 
 export default ProductItem;

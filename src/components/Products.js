@@ -26,7 +26,7 @@ class Products extends React.Component {
     }
 
     onChange(state) {
-        this.setState(state);
+        // this.setState(state);
     }
 
     handleClick(product) {

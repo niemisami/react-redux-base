@@ -8,7 +8,7 @@ class Users extends React.Component {
         this.state = {
             users: []
         }
-        this.setState = this.setState.bind(this);
+        // this.setState = this.setState.bind(this);
     }
 
     componentDidMount() {
@@ -20,9 +20,9 @@ class Users extends React.Component {
                 json.users.sort(function(userA, userB) {
                     return userA.balance < userB.balance ? -1 : 1;
                 })
-                this.setState({
-                    users: json.users
-                })
+                // this.setState({
+                //     users: json.users
+                // })
             }).catch(error => {
                 console.log('parsing failed', error)
                 this.setState({

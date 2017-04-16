@@ -13,12 +13,13 @@ class ProductsContainer extends Component {
 
         return (
             < ProductsList title="Tuotteet">
-                {products.map((product, index) => {
+                {products.map((product, index) =>
                     <ProductItem
                         key={index}
-                        products={product}
-                        onProductClicked={addProductToShoppingCart(product)} />
-                })}
+                        product={product}
+                        onProductClicked={() => addProductToShoppingCart(product)} />
+                )}
+
             </ProductsList >
         )
     }

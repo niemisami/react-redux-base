@@ -18,7 +18,7 @@ class HomePage extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({ value: nextProps.value });
+        // this.setState({ value: nextProps.value });
     }
 
     increment(event) {

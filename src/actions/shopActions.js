@@ -4,18 +4,28 @@ import dateformat from 'dateformat';
 
 //TODO: change functions to ES6 arrow consts 
 
-export function requestProducts() {
-    return {
-        type: types.REQUEST_PRODUCTS
-    };
+
+export const fetchProducts = () => dispatch => {
+    axios.get('/product')
+        .then(response => {
+            if (response.status === 200) {
+                dispatch(receiveProducts(response.data.products, false))
+            } else {
+                console.log("TODO: HANDLE ERROR")
+            }
+
+        }).catch(errors => {
+            console.log(errors);
+            dispatch(receiveProducts(errors, true))
+        });
 }
-export function receiveProducts(products, error) {
-    return {
-        type: types.RECEIVE_PRODUCTS,
-        products: products,
-        error: error
-    }
-}
+
+const receiveProducts = (products, error) => ({
+    type: types.RECEIVE_PRODUCTS,
+    products: products,
+    error: error
+})
+
 
 export function requestUsers() {
     return {
@@ -30,18 +40,18 @@ export function receiveUsers(users, error) {
     }
 }
 
-export function addProductToShoppingCart(product) {
-    return {
+export const addProductToShoppingCart = product => (dispatch) => {
+    dispatch({
         type: types.ADD_PRODUCT_TO_CART,
         product: product
-    };
+    });
 }
-export function removeProductFromShoppingCart(index) {
 
-    return {
+export const removeProductFromShoppingCart = index => (dispatch) => {
+    dispatch({
         type: types.REMOVE_PRODUCT_FROM_CART,
         index: index
-    };
+    });
 }
 
 export function displayConfirmationModal() {
@@ -53,22 +63,6 @@ export function hideConfirmationModal() {
 }
 
 
-export const fetchProducts = () => (dispatch, getState) => {
-    dispatch(requestProducts());
-
-    return axios.get('/product')
-        .then(response => {
-            if (response.status === 200) {
-                dispatch(receiveProducts(response.data.products, false))
-            } else {
-                console.log("TODO: HANDLE ERROR")
-            }
-
-        }).catch(errors => {
-            console.log(errors);
-            dispatch(receiveProducts(errors, true))
-        });
-}
 
 export const fetchUsers = () => (dispatch, getState) => {
     dispatch(requestUsers());
