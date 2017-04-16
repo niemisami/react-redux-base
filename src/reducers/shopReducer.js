@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 const initialState = {
     usersOnline: 0,
     users: [],
-    userId: "",
+    userId: "testi1",
     products: [],
     shoppingCart: [],
     shoppingCartPrice: 0.0,
@@ -14,7 +14,6 @@ const initialState = {
 }
 
 const resetCart = {
-    products: [],
     shoppingCart: [],
     shoppingCartPrice: 0.0,
     showModal: false,
@@ -73,14 +72,18 @@ export default function shopReducer(state = initialState, action) {
 
         case types.CHECKOUT_REQUEST:
             return Object.assign({}, state, {
-                purchaseStatus: "Delivering order. Please wait"
+                purchaseStatus: "Delivering order. Please wait",
+                showModal: true
             })
 
         case types.CHECKOUT_SUCCESS:
-            return resetCart;
+            return Object.assign({}, state,
+                resetCart
+            )
         case types.CHECKOUT_FAIL:
             return Object.assign({}, state, {
-                purchaseStatus: "Purchase failed. Please try again"
+                purchaseStatus: "Purchase failed. Please try again",
+                showModal: false
             })
 
         case types.DISPLAY_CONFIRMATION_MODAL:

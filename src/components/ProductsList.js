@@ -23,4 +23,4 @@ ProductsList.propTypes = {
     title: PropTypes.string
 }
 
-export default ProductsList
+export default ProductsList;

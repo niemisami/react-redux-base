@@ -78,27 +78,31 @@ export const fetchUsers = () => (dispatch, getState) => {
         });
 }
 
-export const checkout = (products, userId) => (dispatch, getState) => {
+export const checkout = (products) => (dispatch, getState) => {
+    let userId = getState().shop.userId;
     dispatch({
         type: types.CHECKOUT_REQUEST
-    })
-    if (!products || products.length < 1 || !userId || userId < 0) {
+    });
+    if (!products || products.length < 1 || !userId) {
         dispatch({
             type: types.CHECKOUT_FAIL
-        })
-    } else {
-        let success = dispatch({
-            type: types.CHECKOUT_SUCCESS
-        })
-        let failure = dispatch({
-            type: types.CHECKOUT_FAIL
-        })
-        buyProducts(products, userId, success, failure)
-
+        });
     }
 }
 
-const buyProducts = (products, userId, success, failure) => {
+export const buyProducts = (products) => (dispatch, getState) => {
+    let success = dispatch({
+        type: types.CHECKOUT_SUCCESS
+    })
+    let failure = dispatch({
+        type: types.CHECKOUT_FAIL
+    })
+    let userId = getState().shop.userId;
+    console.log(userId);
+    postPurchase(products, userId, success, failure)
+}
+
+const postPurchase = (products, userId, success, failure) => {
     // Currently the API supports bying products only one by one
     products.map((product, index) => {
         let now = new Date();
@@ -109,20 +113,19 @@ const buyProducts = (products, userId, success, failure) => {
             time: dateformat(now, "hh:mm:ss.l")
         }
 
-        axios.post('/purchase', {
+        axios.post('/purchase/' + userId, {
             purchase: purchase
         }
         ).then(response => {
-            if (response.statusCode != 200) {
-                return new Promise.reject('purchase failed: ' + response.statusCode);
+            if (response.status != 200) {
+                console.log("ERROR: " + response.status)
             }
-            response.json().then(json => {
-                if (index === products.length - 1) {
-                    success();
-                }
-            })
+            if (index === products.length - 1) {
+                () => success();
+            }
         }).catch(errors => {
-            failure();
+            console.log(errors);
+            () => failure();
         });
     });
 }
