@@ -51,7 +51,7 @@ app.get('/wallofshame', function (req, res) {
   }) 
 });
 
-var wallOfShamePromise = new Promise((resolve, reject) => {
+let wallOfShamePromise = new Promise((resolve, reject) => {
   let shameJson = {
     users: [
       { id: 1, name: "Pekkajäbä", balance: -1 },

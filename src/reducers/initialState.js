@@ -3,5 +3,4 @@
 // export default fromJS(state)
 
 export default {
-  counter: 0
 }
