@@ -1,38 +1,59 @@
 import express from 'express';
 import webpack from 'webpack';
 import path from 'path';
-import config from '../webpack.config.dev';
+import webpackConfig from '../webpack.config.dev';
 import open from 'open';
 import favicon from 'serve-favicon';
+
+
+/**Authentication */
+import passport from 'passport';
+import session from 'express-session';
+import redis from 'connect-redis';
+import config from './config';
 
 /* eslint-disable no-console */
 import { createStore } from 'redux';
 import React from 'react';
 import { Provider } from 'react-redux';
-import { renderToString } from 'react-dom/server'
-import configureStore from '../src/store/configureStore'
+import { renderToString } from 'react-dom/server';
+import configureStore from '../src/store/configureStore';
 import App from '../src/containers/App';
-import indexTemplate from './assets/indexTemplate'
-
+import indexTemplate from './assets/indexTemplate';
 
 import { Router, browserHistory, match, RouterContext } from 'react-router';
 import routes from '../src/routes';
 
+
+
+
 // const favicon = require('serve-favicon');
 const port = 3000;
 const app = express();
-const compiler = webpack(config);
+const compiler = webpack(webpackConfig);
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
-  publicPath: config.output.publicPath
+  publicPath: webpackConfig.output.publicPath
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
-app.use(favicon(path.join(__dirname, 'assets', 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'assets', 'public', 'favicon.png')));
 app.use(express.static(path.resolve(__dirname, '../src')));
 app.use("/styles", express.static(path.join(__dirname, '..', 'src', 'styles')));
 
+/**Auth session and paths */
+const RedisStore = redis(session);
+app.use(session({
+  store: new RedisStore({
+    url: config.redisStore.url
+  }),
+  secret: config.redisStore.secret,
+  resave: false,
+  saveUnitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get('/user', function (req, res) {
   res.status(200).send({
