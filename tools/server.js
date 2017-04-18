@@ -1,78 +1,86 @@
 import express from 'express';
 import webpack from 'webpack';
 import path from 'path';
-import webpackConfig from '../webpack.config.dev';
 import open from 'open';
 import favicon from 'serve-favicon';
+import bodyparser from 'body-parser';
+import React from 'react';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { renderToString } from 'react-dom/server';
+import { Router, browserHistory, match, RouterContext } from 'react-router';
+import webpackConfig from '../webpack.config.dev';
 
 
 /**Authentication */
 import passport from 'passport';
 import session from 'express-session';
-import redis from 'connect-redis';
 import config from './config';
+import { loginStrategy, signupStrategy } from './auth/init';
+import * as db from './database';
+import authCheckMiddleware from './auth/auth-check';
+import authRouter from './routes/auth'
+import apiRouter from './routes/api'
 
+/**REACT PATHS AND TEMPLATES */
 /* eslint-disable no-console */
-import { createStore } from 'redux';
-import React from 'react';
-import { Provider } from 'react-redux';
-import { renderToString } from 'react-dom/server';
-import configureStore from '../src/store/configureStore';
 import App from '../src/containers/App';
+import configureStore from '../src/store/configureStore';
 import indexTemplate from './assets/indexTemplate';
-
-import { Router, browserHistory, match, RouterContext } from 'react-router';
 import routes from '../src/routes';
 
 
-
-
-// const favicon = require('serve-favicon');
+/**BASIC SERVER INITIALIZATION */
 const port = 3000;
 const app = express();
-const compiler = webpack(webpackConfig);
 
+app.use(favicon(path.join(__dirname, 'assets', 'public', 'favicon.png')));
+app.use(express.static(path.resolve(__dirname, '../src')));
+app.use("/styles", express.static(path.join(__dirname, '..', 'src', 'styles')));
+app.use(bodyparser.urlencoded({ extended: false }))
+
+
+/**WEBPACK CONFIGURATION */
+const compiler = webpack(webpackConfig);
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
   publicPath: webpackConfig.output.publicPath
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
-app.use(favicon(path.join(__dirname, 'assets', 'public', 'favicon.png')));
-app.use(express.static(path.resolve(__dirname, '../src')));
-app.use("/styles", express.static(path.join(__dirname, '..', 'src', 'styles')));
 
-/**Auth session and paths */
-const RedisStore = redis(session);
-app.use(session({
-  store: new RedisStore({
-    url: config.redisStore.url
-  }),
-  secret: config.redisStore.secret,
-  resave: false,
-  saveUnitialized: false
-}));
+
+
+/**AUTH SESSION AND PATHS */
 app.use(passport.initialize());
-app.use(passport.session());
+
+passport.use('local-signup', signupStrategy);
+passport.use('local-login', loginStrategy);
+
+app.use('/private', authCheckMiddleware);
+app.use('/auth', authRouter);
+app.use('/private', apiRouter);
+
 
 app.get('/user', function (req, res) {
   res.status(200).send({
     user:
-    { name: "Pekkajäbä", balance: 10 }
+    { name: "Testijäbä", balance: 10 }
   });
 });
 
 
+/**API ENDPOINTS  */
 app.get('/wallofshame', function (req, res) {
   wallOfShamePromise.then(wallOfShameJson => {
     res.status(200).send(wallOfShameJson);
   })
-  .catch(reason => {
-    res.status(404).send(reason);
-  }) 
+    .catch(reason => {
+      res.status(404).send(reason);
+    })
 });
 
-let wallOfShamePromise = new Promise((resolve, reject) => {
+const wallOfShamePromise = new Promise((resolve, reject) => {
   let shameJson = {
     users: [
       { id: 1, name: "Pekkajäbä", balance: -1 },
@@ -87,9 +95,9 @@ let wallOfShamePromise = new Promise((resolve, reject) => {
   if (shameJson !== undefined && shameJson.users.length >= 0) {
     setTimeout(() => {
       resolve(shameJson);
-    },2000)
-  } else{
-    reject({error: "Didn't find wall of shame"})
+    }, 2000)
+  } else {
+    reject({ error: "Didn't find wall of shame" })
   }
 })
 
@@ -121,9 +129,9 @@ app.post('/purchase/:id', function (req, res) {
 });
 
 
-app.get("*", handleRender);
+// app.get("*", handleRender);
 
-function handleRender(req, res) {
+const handleRender = (req, res) => {
 
   match({ routes: routes, location: req.url }, function (error, redirectLocation, renderProps) {
 
@@ -144,9 +152,6 @@ function handleRender(req, res) {
   });
 }
 
-function stateJSONToString(jsonState) {
-  return JSON.stringify(jsonState).replace(/</g, '\\u003c')
-}
 
 app.listen(port, function (err) {
   if (err) {
