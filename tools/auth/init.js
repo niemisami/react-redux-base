@@ -2,7 +2,9 @@ import jwt from 'jsonwebtoken';
 import passport from 'passport'
 import { Strategy } from 'passport-local';
 import * as db from '../database';
-import config from '../config'
+
+
+const config = require('../config.json');
 
 
 

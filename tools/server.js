@@ -15,20 +15,23 @@ import webpackConfig from '../webpack.config.dev';
 /**Authentication */
 import passport from 'passport';
 import session from 'express-session';
-import config from './config';
-import { loginStrategy, signupStrategy } from './auth/init';
-import * as db from './database';
-import authCheckMiddleware from './auth/auth-check';
-import authRouter from './routes/auth'
-import apiRouter from './routes/api'
+const config = require('./config.json');
+// import { loginStrategy, signupStrategy } from './auth/init';
+// import * as db from './database';
+// import authCheckMiddleware from './auth/auth-check';
 
-/**REACT PATHS AND TEMPLATES */
+
+
+/**REACT ROUTES AND TEMPLATES */
 /* eslint-disable no-console */
 import App from '../src/containers/App';
 import configureStore from '../src/store/configureStore';
 import indexTemplate from './assets/indexTemplate';
 import routes from '../src/routes';
 
+
+/**DATABASE */
+require('./models').connect(config.dbUri);
 
 /**BASIC SERVER INITIALIZATION */
 const port = 3000;
@@ -54,12 +57,21 @@ app.use(require('webpack-hot-middleware')(compiler));
 /**AUTH SESSION AND PATHS */
 app.use(passport.initialize());
 
+const signupStrategy = require('./passport/local-signup');
+const loginStrategy = require('./passport/local-login');
+
+
 passport.use('local-signup', signupStrategy);
 passport.use('local-login', loginStrategy);
 
-app.use('/private', authCheckMiddleware);
-app.use('/auth', authRouter);
-app.use('/private', apiRouter);
+const authCheckMiddleware = require('./middleware/auth-check');
+app.use('/api', authCheckMiddleware);
+
+// routes
+const authRoutes = require('./routes/auth');
+const apiRoutes = require('./routes/api');
+app.use('/auth', authRoutes);
+app.use('/api', apiRoutes);
 
 
 app.get('/user', function (req, res) {
@@ -153,7 +165,7 @@ const handleRender = (req, res) => {
 }
 
 
-app.listen(port, function (err) {
+app.listen(port, (err) => {
   if (err) {
     console.log(err);
   } else {

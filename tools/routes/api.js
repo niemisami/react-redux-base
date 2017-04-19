@@ -1,13 +1,13 @@
-import express from 'express';
+const express = require('express');
 
-const apiRouter = new express.Router();
 
-apiRouter.get('/user', (req, res) => {
-    res.status(200).send({
-        user:
-        { name: "Testijäbä", balance: 10 }
-    });
+const router = new express.Router();
+
+router.get('/dashboard', (req, res) => {
+  res.status(200).json({
+    message: "You're authorized to see this secret message."
+  });
 });
 
 
-export default apiRouter;
+module.exports = router;
