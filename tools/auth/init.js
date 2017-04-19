@@ -3,10 +3,7 @@ import passport from 'passport'
 import { Strategy } from 'passport-local';
 import * as db from '../database';
 
-
 const config = require('../config.json');
-
-
 
 export const loginStrategy = new Strategy({
   usernameField: 'email',

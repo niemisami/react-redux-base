@@ -68,82 +68,17 @@ const authCheckMiddleware = require('./middleware/auth-check');
 app.use('/api', authCheckMiddleware);
 
 // routes
-const authRoutes = require('./routes/auth');
-const apiRoutes = require('./routes/api');
-app.use('/auth', authRoutes);
-app.use('/api', apiRoutes);
+import authRouter from './routes/auth';
+import apiRouter from './routes/api';
 
-
-app.get('/user', function (req, res) {
-  res.status(200).send({
-    user:
-    { name: "Testijäbä", balance: 10 }
-  });
-});
-
-
-/**API ENDPOINTS  */
-app.get('/wallofshame', function (req, res) {
-  wallOfShamePromise.then(wallOfShameJson => {
-    res.status(200).send(wallOfShameJson);
-  })
-    .catch(reason => {
-      res.status(404).send(reason);
-    })
-});
-
-const wallOfShamePromise = new Promise((resolve, reject) => {
-  let shameJson = {
-    users: [
-      { id: 1, name: "Pekkajäbä", balance: -1 },
-      { id: 2, name: "Typerä amkkijäbä", balance: -1 },
-      { id: 3, name: "git ", balance: -1 },
-      { id: 4, name: "Piita", balance: -200 },
-      { id: 5, name: "Merijäbä", balance: -1 },
-      { id: 6, name: "Vanha pieru", balance: -5 },
-      { id: 7, name: "Julius", balance: -10 }
-    ]
-  }
-  if (shameJson !== undefined && shameJson.users.length >= 0) {
-    setTimeout(() => {
-      resolve(shameJson);
-    }, 2000)
-  } else {
-    reject({ error: "Didn't find wall of shame" })
-  }
-})
+app.use('/auth', authRouter);
+app.use('/api', apiRouter);
 
 
 
-app.get('/product', function (req, res) {
-  res.status(200).send({
-    products:
-    [{ id: 1, name: "Kola", price: 1 },
-    { id: 2, name: "ES", price: 1.5 },
-    { id: 3, name: "Ohrapirtelö", price: 1.15 },
-    { id: 4, name: "Omenamehu", price: 1.5 },
-    { id: 5, name: "Tuplapatukka", price: 0.5 }]
-  })
-});
+app.get("*", handleRender);
 
-app.get('/product/:id', function (req, res) {
-  res.status(200).send({
-    product: { id: 1, name: "Kola", price: 1 }
-  })
-});
-
-app.post('/purchase/:id', function (req, res) {
-  res.status(200).send({
-    purchase: {
-      message: "purchase done"
-    }
-  });
-});
-
-
-// app.get("*", handleRender);
-
-const handleRender = (req, res) => {
+function handleRender (req, res) {
 
   match({ routes: routes, location: req.url }, function (error, redirectLocation, renderProps) {
 

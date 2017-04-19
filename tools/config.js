@@ -1,4 +1,4 @@
 export default {
-    dbUri: "mongodb://localhost/react_app",
+    dbUri: "mongodb://localhost/niemisami_db",
     jwtSecret: "hyshyssalaisuudet"
 }

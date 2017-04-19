@@ -1,8 +1,8 @@
-const express = require('express');
-const validator = require('validator');
-const passport = require('passport');
+import express, { Router } from 'express';
+import validator from 'validator';
+import passport from 'passport';
 
-const router = new express.Router();
+const authRouter = new Router();
 
 /**
  * Validate the sign up form
@@ -75,7 +75,7 @@ function validateLoginForm(payload) {
   };
 }
 
-router.post('/signup', (req, res, next) => {
+authRouter.post('/signup', (req, res, next) => {
   const validationResult = validateSignupForm(req.body);
   if (!validationResult.success) {
     return res.status(400).json({
@@ -113,7 +113,7 @@ router.post('/signup', (req, res, next) => {
   })(req, res, next);
 });
 
-router.post('/login', (req, res, next) => {
+authRouter.post('/login', (req, res, next) => {
   const validationResult = validateLoginForm(req.body);
   if (!validationResult.success) {
     return res.status(400).json({
@@ -150,4 +150,4 @@ router.post('/login', (req, res, next) => {
 });
 
 
-module.exports = router;
+export default authRouter;
