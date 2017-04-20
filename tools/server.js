@@ -87,7 +87,7 @@ function handleRender (req, res) {
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
-      const title = "MordorMarket2.0"
+      const title = "Niemisami template"
       console.log(title);
       res.send(indexTemplate({
         title: title
