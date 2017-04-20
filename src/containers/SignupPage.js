@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux'
 import { login, logout } from '../actions/authActions'
 import { Router, browserHistory } from 'react-router';
-import LoginForm from '../components/LoginForm';
 
 class LoginPage extends React.Component {
 
@@ -24,11 +23,15 @@ class LoginPage extends React.Component {
     } = this.props;
 
     return (
-
-      <div className="login-page">
-        <LoginForm
-          onSubmit={login} />
-      </div>
+        <div className="form">
+          <form className="">
+            <input type="text" placeholder="name" />
+            <input type="password" placeholder="password" />
+            <input type="text" placeholder="email address" />
+            <button>create</button>
+            <p className="message">Already registered? <a onClick={() => console.log("Redirect to login view")}>Sign In</a></p>
+          </form>
+        </div>
     );
   }
 }
@@ -36,8 +39,7 @@ class LoginPage extends React.Component {
 LoginPage.propTypes = {
   authenticated: PropTypes.bool.isRequired,
   userId: PropTypes.string.isRequired,
-  login: PropTypes.func.isRequired,
-  logout: PropTypes.func.isRequired
+  register: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({

@@ -6,7 +6,7 @@ import dateformat from 'dateformat';
 
 
 export const fetchProducts = () => dispatch => {
-    axios.get('/product')
+    axios.get('/api/product')
         .then(response => {
             if (response.status === 200) {
                 dispatch(receiveProducts(response.data.products, false))
@@ -67,7 +67,7 @@ export function hideConfirmationModal() {
 export const fetchUsers = () => (dispatch, getState) => {
     dispatch(requestUsers());
 
-    return axios.get('/wallofshame')
+    return axios.get('/api/wallofshame')
         .then(response => response.json())
         .then(users => {
             console.log(users);
@@ -112,7 +112,7 @@ const postPurchase = (products, userId, success, failure) => {
             time: dateformat(now, "hh:mm:ss.l")
         }
 
-        axios.post('/purchase/' + userId, {
+        axios.post('/api/purchase/' + userId, {
             purchase: purchase
         }
         ).then(response => {
