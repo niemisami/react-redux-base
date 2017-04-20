@@ -13,6 +13,8 @@ export default ({ title }) => {
                 
                 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+
                 <link rel="stylesheet" href="/styles/main.css">
             </head> 
             <body>
