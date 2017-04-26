@@ -15,12 +15,12 @@ export default ({ title }) => {
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 
-                <link rel="stylesheet" href="/styles/main.css">
+                <link rel="stylesheet" href="/styles/main.css" type="text/css"/>
             </head> 
             <body>
             <div id="app"></div>
 
-            <script src="/bundle.js"></script>
+            <script src="scripts/bundle.js"></script>
             </body>
         </html>
         `

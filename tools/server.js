@@ -39,7 +39,7 @@ const app = express();
 
 app.use(favicon(path.join(__dirname, 'assets', 'public', 'favicon.png')));
 app.use(express.static(path.resolve(__dirname, '../src')));
-app.use("/styles", express.static(path.join(__dirname, '..', 'src', 'styles')));
+app.use("/styles", express.static(path.join(__dirname, '..', 'dist/styles/')));
 app.use(bodyparser.urlencoded({ extended: false }))
 
 
