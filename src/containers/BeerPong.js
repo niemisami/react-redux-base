@@ -23,14 +23,14 @@ class BeerPong extends Component {
           </div>
 
           <div className="row">
-            <div className="col-md-6 col-md-push-6 col-xs-6 col-xs-push-6">
+            <div className="col-md-6 col-xs-6">
 
               <div className="col-lg-6">
-                LISTA PELEISTÄ
+                <input placeholder="pelikaveri" />
+                <h3>Lopputulos 10 <b>+</b>   <b>-</b></h3> 
               </div>
-
+              LISTA PELEISTÄ
             </div>
-
           </div>
         </div>
       </div>

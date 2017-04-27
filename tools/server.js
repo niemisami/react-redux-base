@@ -75,7 +75,6 @@ app.use('/auth', authRouter);
 app.use('/api', apiRouter);
 
 
-
 app.get("*", handleRender);
 
 function handleRender (req, res) {
@@ -88,7 +87,6 @@ function handleRender (req, res) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
       const title = "Niemisami template"
-      console.log(title);
       res.send(indexTemplate({
         title: title
       }));

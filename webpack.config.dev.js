@@ -40,6 +40,7 @@ export default {
 
             { // regular css files
         test: /\.css$/,
+        include: path.join(__dirname,'node_modules'),
         loader: ExtractTextPlugin.extract({
           loader: 'css-loader?importLoaders=1'
         })
@@ -49,5 +50,13 @@ export default {
         loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
       }  
     ]
-  }
+  },
+
+  resolve: {
+    extensions: ['', '.js', '.css', '.scss'],
+    alias: {
+        bourbon: path.join(__dirname, '/node_modules/flexboxgrid/dist/flexboxgrid.min.css'),
+        normalize: path.join(__dirname, '/node_modules/normalize.css')
+    }
+}
 };
