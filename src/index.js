@@ -10,6 +10,7 @@ import configureStore from './store/configureStore';
 import initialState from './reducers/initialState';
 import { hasUserAuthenticated } from './actions/authActions'
 
+
 const store = configureStore(initialState);
 
 const history = syncHistoryWithStore(browserHistory, store);
