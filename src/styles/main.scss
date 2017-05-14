@@ -1,4 +1,7 @@
 @import '~flexboxgrid';
+@import '~react-datepicker/dist/react-datepicker.css';
+@import 'general';
+@import 'variables';
 body {
     background: #f1f1f1;
     /* fallback for old browsers */
@@ -8,7 +11,6 @@ body {
     background: linear-gradient(to left, #f1f1f1, #d2d2d2);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: 'Roboto', sans-serif;
 }
 
 .login-page {
@@ -70,6 +72,32 @@ body {
 }
 
 h1 {
-    font-size: 2em;
-    color: #ff88aa;
+    color: $primary-color;
+}
+
+// Material
+.card {
+    padding: 1rem;
+    font-size: 1em;
+    -webkit-border-radius: 0.5em;
+    border-radius: 0.2em;
+    border: none;
+    -webkit-box-shadow: 0rem, 0.2rem, 0.3rem, 0.1rem rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0rem, 0.2rem, 0.3rem, 0.1rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0rem, 0.2rem, 0.3rem, 0.1rem rgba(0, 0, 0, 0.3);
+    background-color: #fdfdfd;
+}
+
+.input {
+    line-height: 2em;
+    padding: 0.2rem;
+    font-size: 1rem;
+    border: none;
+    background-color: #fdfdfd;
+    &:focus {
+        outline: none;
+        -webkit-box-shadow: 0 0.2rem 0 0 $primary-color;
+        -moz-box-shadow: 0 0.2rem 0 $primary-color;
+        box-shadow: 0 0.2rem 0 0 $primary-color;
+    }
 }
