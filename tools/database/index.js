@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt-nodejs';
 
 const records = [
   { id: 1111, rfid: '12345667', password: 'salasana', fname: 'Sami', lname: 'Nieminen', balance: 10, email: "sami@sami.fi" },
