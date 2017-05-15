@@ -1,14 +1,12 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux'
-import { login, logout } from '../actions/authActions'
-import { Router, browserHistory } from 'react-router';
+import { connect } from 'react-redux';
+import { login, logout } from '../actions/authActions';
 
 class LoginPage extends React.Component {
 
-
   componentDidMount() {
-    let authenticated = this.props.authenticated;
-    let userId = this.props.userId;
+    const authenticated = this.props.authenticated;
+    const userId = this.props.userId;
 
     if (authenticated) {
       this.props.login(userId);
@@ -17,21 +15,21 @@ class LoginPage extends React.Component {
 
   render() {
     const {
-        authenticated,
+      authenticated,
       login,
       logout
-    } = this.props;
+  } = this.props;
 
     return (
-        <div className="form">
-          <form className="">
-            <input type="text" placeholder="name" />
-            <input type="password" placeholder="password" />
-            <input type="text" placeholder="email address" />
-            <button>create</button>
-            <p className="message">Already registered? <a onClick={() => console.log("Redirect to login view")}>Sign In</a></p>
-          </form>
-        </div>
+      <div className="form">
+        <form className="">
+          <input type="text" placeholder="name" />
+          <input type="password" placeholder="password" />
+          <input type="text" placeholder="email address" />
+          <button>create</button>
+          <p className="message">Already registered? <a onClick={() => console.log("Redirect to login view")}>Sign In</a></p>
+        </form>
+      </div>
     );
   }
 }
@@ -44,7 +42,7 @@ LoginPage.propTypes = {
 
 const mapStateToProps = (state) => ({
   authenticated: state.auth.authenticated,
-  userId: state.auth.userId
+    userId: state.auth.userId
 })
 
 export default connect(mapStateToProps, {
