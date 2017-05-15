@@ -39,7 +39,7 @@ const app = express();
 
 app.use(favicon(path.join(__dirname, 'assets', 'public', 'favicon.png')));
 app.use(express.static(path.resolve(__dirname, '../src')));
-app.use("/styles", express.static(path.join(__dirname, '..', 'src', 'styles')));
+app.use("/styles", express.static(path.join(__dirname, '..', 'dist/styles/')));
 app.use(bodyparser.urlencoded({ extended: false }))
 
 
@@ -75,7 +75,6 @@ app.use('/auth', authRouter);
 app.use('/api', apiRouter);
 
 
-
 app.get("*", handleRender);
 
 function handleRender (req, res) {
@@ -88,7 +87,6 @@ function handleRender (req, res) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
       const title = "Niemisami template"
-      console.log(title);
       res.send(indexTemplate({
         title: title
       }));
