@@ -34,7 +34,16 @@
     ],
     "no-console": 0,
     "prefer-template": 0,
-    "array-callback-return": 1
+    "array-callback-return": 1,
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ]
   }
 }
 /* SEMI
