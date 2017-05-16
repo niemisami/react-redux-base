@@ -1,9 +1,13 @@
 {
   "name": "redux-training",
   "author": "Sami Nieminen",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "simple Redux sample app",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/niemisami/react-redux-base.git"
+  },
   "scripts": {
     "test": "test",
     "prestart": "babel-node tools/startMessage.js",
