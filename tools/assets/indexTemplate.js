@@ -3,7 +3,7 @@
  * initialState must be JSON string
  */
 export default ({ title }) => {
-    return `
+  return `
         <!DOCTYPE html>
         <html lang="en">
             <head>

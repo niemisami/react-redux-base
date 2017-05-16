@@ -6,8 +6,8 @@ const records = [
 ];
 
 export const findById = (id, cb) => {
-  process.nextTick(function () {
-    let idx = id - 1;
+  process.nextTick(() => {
+    const idx = id - 1;
     if (records[idx]) {
       cb(null, records[idx]);
     } else {
@@ -17,9 +17,9 @@ export const findById = (id, cb) => {
 }
 
 export const findByRfid = (rfid, cb) => {
-  process.nextTick(function () {
+  process.nextTick(() => {
     for (let i = 0, len = records.length; i < len; i++) {
-      let record = records[i];
+      const record = records[i];
       if (record.rfid === rfid) {
         return cb(null, record);
       }
@@ -30,9 +30,9 @@ export const findByRfid = (rfid, cb) => {
 
 /** Combine  */
 export const findByEmail = (email, cb) => {
-  process.nextTick(function () {
+  process.nextTick(() => {
     for (let i = 0, len = records.length; i < len; i++) {
-      let record = records[i];
+      const record = records[i];
       if (email === record.email) {
         return cb(null, record);
       }
@@ -46,13 +46,17 @@ export const findByEmail = (email, cb) => {
  * https://vladimirponomarev.com/blog/authentication-in-react-apps-jwt
 */
 export const comparePassword = (email, password, cb) => {
-  //BRCYPT comparison
   // bcrypt.compare(password, this.password, cb);
-  process.nextTick(function () {
+  process.nextTick(() => {
     findByEmail(email, (err, user) => {
-      if (err) { return cb(err) }
-      if (!user) { return cb(null, false) }
-      if (user.password !== password) { return cb(null, false) }
+      if (err) {
+        return cb(err)
+      } else if (!user) {
+        return cb(null, false)
+      } else if (user.password !== password) {
+        return cb(null, false)
+      }
+      return cb(null, false);
     })
   });
 }

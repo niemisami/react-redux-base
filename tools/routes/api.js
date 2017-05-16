@@ -8,16 +8,16 @@ apiRouter.get('/dashboard', (req, res) => {
   });
 });
 
-apiRouter.get('/user', function (req, res) {
+apiRouter.get('/user', (req, res) => {
   res.status(200).send({
     user:
-    { name: "Testijäbä", balance: 10 }
+    { name: 'Testijäbä', balance: 10 }
   });
 });
 
 
 /**API ENDPOINTS  */
-apiRouter.get('/wallofshame', function (req, res) {
+apiRouter.get('/wallofshame', (req, res) => {
   wallOfShamePromise.then(wallOfShameJson => {
     res.status(200).send(wallOfShameJson);
   })
@@ -27,15 +27,15 @@ apiRouter.get('/wallofshame', function (req, res) {
 });
 
 const wallOfShamePromise = new Promise((resolve, reject) => {
-  let shameJson = {
+  const shameJson = {
     users: [
-      { id: 1, name: "Pekkajäbä", balance: -1 },
-      { id: 2, name: "Typerä amkkijäbä", balance: -1 },
-      { id: 3, name: "git ", balance: -1 },
-      { id: 4, name: "Piita", balance: -200 },
-      { id: 5, name: "Merijäbä", balance: -1 },
-      { id: 6, name: "Vanha pieru", balance: -5 },
-      { id: 7, name: "Julius", balance: -10 }
+      { id: 1, name: 'Pekkajäbä', balance: -1 },
+      { id: 2, name: 'Typerä amkkijäbä', balance: -1 },
+      { id: 3, name: 'git ', balance: -1 },
+      { id: 4, name: 'Piita', balance: -200 },
+      { id: 5, name: 'Merijäbä', balance: -1 },
+      { id: 6, name: 'Vanha pieru', balance: -5 },
+      { id: 7, name: 'Julius', balance: -10 }
     ]
   }
   if (shameJson !== undefined && shameJson.users.length >= 0) {
@@ -49,30 +49,30 @@ const wallOfShamePromise = new Promise((resolve, reject) => {
 
 
 
-apiRouter.get('/product', function (req, res) {
+apiRouter.get('/product', (req, res) => {
   res.status(200).send({
     products:
-    [{ id: 1, name: "Kola", price: 1 },
-    { id: 2, name: "ES", price: 1.5 },
-    { id: 3, name: "Ohrapirtelö", price: 1.15 },
-    { id: 4, name: "Omenamehu", price: 1.5 },
-    { id: 5, name: "Tuplapatukka", price: 0.5 }]
+    [{ id: 1, name: 'Kola', price: 1 },
+    { id: 2, name: 'ES', price: 1.5 },
+    { id: 3, name: 'Ohrapirtelö', price: 1.15 },
+    { id: 4, name: 'Omenamehu', price: 1.5 },
+    { id: 5, name: 'Tuplapatukka', price: 0.5 }]
   })
 });
 
-apiRouter.get('/product/:id', function (req, res) {
+apiRouter.get('/product/:id', (req, res) => {
   res.status(200).send({
-    product: { id: 1, name: "Kola", price: 1 }
+    product: { id: 1, name: 'Kola', price: 1 }
   })
 });
 
-apiRouter.post('/purchase/:id', function (req, res) {
+apiRouter.post('/purchase/:id', (req, res) => {
   res.status(200).send({
     purchase: {
-      message: "purchase done"
+      message: 'purchase done'
     }
   });
 });
 
-  
+
 export default apiRouter;

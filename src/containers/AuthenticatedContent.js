@@ -4,24 +4,26 @@ import { connect } from 'react-redux'
 
 
 class AuthenticatedContent extends React.Component {
-    componentDidMount() {
-        const { authenticated } = this.props;
+  componentDidMount() {
+    const { authenticated } = this.props;
 
-        if (!authenticated) {
-            // set the current url/path for future redirection (we use a Redux action)
-            // then redirect (we use a React Router method)
-            browserHistory.push("/login")
-        }
+    if (!authenticated) {
+      // set the current url/path for future redirection (we use a Redux action)
+      // then redirect (we use a React Router method)
+      browserHistory.push('/login')
     }
+  }
 
-    render() {
-        const { authenticated } = this.props;
-        if (authenticated) {
-            return this.props.children;
-        } else {
-            return null;
-        }
+  render() {
+    const { authenticated, children } = this.props;
+    let content = {};
+    if (authenticated) {
+      content = children;
+    } else {
+      content = null;
     }
+    return content;
+  }
 }
 
 // Grab a reference to the current URL. If this is a web app and you are
@@ -30,15 +32,15 @@ class AuthenticatedContent extends React.Component {
 // the current position in the app.
 
 AuthenticatedContent.propTypes = {
-    authenticated: PropTypes.bool.isRequired,
-    children: PropTypes.node.isRequired
+  authenticated: PropTypes.bool.isRequired,
+  children: PropTypes.node.isRequired
 }
 
 function mapStateToProps(state, ownProps) {
-    return {
-        authenticated: state.auth.authenticated,
-        currentURL: ownProps.location.pathname
-    }
+  return {
+    authenticated: state.auth.authenticated,
+    currentURL: ownProps.location.pathname
+  }
 }
 
-export default connect(mapStateToProps)(AuthenticatedContent);
+export default connect(mapStateToProps)(AuthenticatedContent)

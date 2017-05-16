@@ -2,7 +2,7 @@ import cookie from 'react-cookie';
 import { browserHistory } from 'react-router';
 import * as types from './actionTypes';
 
-export const hasUserAuthenticated = () => (dispatch) => {
+export const hasUserAuthenticated = () => dispatch => {
   const userCookie = cookie.load('userId');
   if (userCookie && typeof userCookie === 'string') {
     dispatch({
@@ -17,13 +17,13 @@ export const hasUserAuthenticated = () => (dispatch) => {
   }
 }
 
-export const login = userId => (dispatch) => {
+export const login = userId => dispatch => {
   cookie.save('userId', userId, { path: '/' });
   browserHistory.replace('/');
   dispatch({
     type: types.LOGIN_SUCCESS,
     userId: userId,
-    userName: "dummy"
+    userName: 'dummy'
   })
 }
 

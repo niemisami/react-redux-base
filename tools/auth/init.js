@@ -23,7 +23,7 @@ export const loginStrategy = new Strategy({
     return db.comparePassword(userData.email, userData.password, (passwordError, isMatch) => {
       if (passwordError) { return done(passwordError) }
       if (!isMatch) {
-        const error = new Error("Incorrect email of password");
+        const error = new Error('Incorrect email of password');
         error.name = 'IncorrectCredentialsError';
         done(error);
       }
@@ -38,16 +38,14 @@ export const loginStrategy = new Strategy({
       }
 
       return done(null, token, data);
-
     });
-
   });
 });
 
 
 export const signupStrategy = new Strategy({
-  usernameField: "email",
-  password: "password",
+  usernameField: 'email',
+  password: 'password',
   session: false,
   passReqToCallBack: true
 }, (req, email, password, done) => {

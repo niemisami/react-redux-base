@@ -27,7 +27,7 @@ class LoginPage extends React.Component {
           <input type="password" placeholder="password" />
           <input type="text" placeholder="email address" />
           <button>create</button>
-          <p className="message">Already registered? <a onClick={() => console.log("Redirect to login view")}>Sign In</a></p>
+          <p className="message">Already registered? <a onClick={() => console.log('Redirect to login view')}>Sign In</a></p>
         </form>
       </div>
     );
@@ -37,14 +37,15 @@ class LoginPage extends React.Component {
 LoginPage.propTypes = {
   authenticated: PropTypes.bool.isRequired,
   userId: PropTypes.string.isRequired,
-  register: PropTypes.func.isRequired
+  register: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
   authenticated: state.auth.authenticated,
-    userId: state.auth.userId
+  userId: state.auth.userId
 })
 
 export default connect(mapStateToProps, {
   login, logout
-})(LoginPage);
+})(LoginPage)

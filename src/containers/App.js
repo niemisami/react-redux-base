@@ -1,19 +1,14 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 // import Header from './common/Header';
-import {connect} from 'react-redux';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="container-fluid">
-        {this.props.children}
-      </div>
-    );
-  }
-}
+const App = ({ children }) => (
+  <div className="container-fluid">
+    {children}
+  </div>
+)
 
 App.propTypes = {
-  children: PropTypes.object.isRequired
+  children: PropTypes.shape.isRequired
 };
 
-export default App;
+export default App
