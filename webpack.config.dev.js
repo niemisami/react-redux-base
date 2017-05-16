@@ -1,6 +1,6 @@
 import webpack from 'webpack';
 import path from 'path';
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 
 export default {
@@ -15,7 +15,7 @@ export default {
   ],
   target: 'web',
   output: {
-    path: __dirname + '/dist', // Note: Physical files are only output by the production build task `npm run build`.
+    path: path.join(__dirname, '/dist'), // Note: Physical files are only output by the production build task `npm run build`.
     publicPath: '/',
     filename: 'scripts/bundle.js'
   },
@@ -36,11 +36,11 @@ export default {
       { test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000' },
       { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream' },
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' },
-      { test: /\.json$/, loader: 'json' }, 
+      { test: /\.json$/, loader: 'json' },
 
-            { // regular css files
+      { // regular css files
         test: /\.css$/,
-        include: path.join(__dirname,'node_modules'),
+        include: path.join(__dirname, 'node_modules'),
         loader: ExtractTextPlugin.extract({
           loader: 'css-loader?importLoaders=1'
         })
@@ -48,15 +48,15 @@ export default {
       { // sass / scss loader for webpack
         test: /\.(sass|scss)$/,
         loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
-      }  
+      }
     ]
   },
 
   resolve: {
     extensions: ['', '.js', '.css', '.scss'],
     alias: {
-        bourbon: path.join(__dirname, '/node_modules/flexboxgrid/dist/flexboxgrid.min.css'),
-        normalize: path.join(__dirname, '/node_modules/normalize.css')
+      bourbon: path.join(__dirname, '/node_modules/flexboxgrid/dist/flexboxgrid.min.css'),
+      normalize: path.join(__dirname, '/node_modules/normalize.css')
     }
-}
+  }
 };
