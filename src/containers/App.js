@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import Header from './Header';
 
 const App = ({ children }) => (
-  <div className="site-container">
+  <div className="app-container">
     <Header />
     {children}
   </div>

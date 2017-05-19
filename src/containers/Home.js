@@ -2,8 +2,22 @@ import React, { PropTypes } from 'react';
 // import Header from './common/Header';
 
 const Home = () => (
-  <div>
-    <h1>Hello!</h1>
+  <div className="row">
+    <div className="col-xs-12 site-content" id="about">
+      <div className="container">
+        <h1>Hello!</h1>
+      </div>
+    </div>
+    <div className="col-xs-12 site-content" id="contacts">
+      <div className="container">
+        <h1>Hello!</h1>
+      </div>
+    </div>
+    <div className="col-xs-12 site-content" id="projects">
+      <div className="container">
+        <h1>Hello!</h1>
+      </div>
+    </div>
   </div>
 )
 
