@@ -18,7 +18,7 @@ class LoginPage extends React.Component {
 
   render() {
     const {
-        authenticated,
+      authenticated,
       login,
       logout
     } = this.props;
@@ -27,7 +27,8 @@ class LoginPage extends React.Component {
 
       <div className="login-page">
         <LoginForm
-          onSubmit={login} />
+          onSubmit={login}
+        />
       </div>
     );
   }
@@ -40,7 +41,7 @@ LoginPage.propTypes = {
   logout: PropTypes.func.isRequired
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   authenticated: state.auth.authenticated,
   userId: state.auth.userId
 })
