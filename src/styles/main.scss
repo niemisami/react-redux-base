@@ -72,6 +72,7 @@ a {
 }
 
 .site-content {
+  padding-top: 3rem;
   height: 500px;
   &:nth-child(even) {
     background: $background-light;

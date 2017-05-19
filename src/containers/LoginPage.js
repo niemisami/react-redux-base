@@ -1,33 +1,60 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux'
-import { login, logout } from '../actions/authActions'
-import { Router, browserHistory } from 'react-router';
+import { login } from '../actions/authActions'
 import LoginForm from '../components/LoginForm';
 
 class LoginPage extends React.Component {
 
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {
+        email: '', password: ''
+      },
+      errors: {}
+    }
+  }
   componentDidMount() {
-    let authenticated = this.props.authenticated;
-    let userId = this.props.userId;
+    const { authenticated, userId } = this.props.authenticated;
 
     if (authenticated) {
       this.props.login(userId);
     }
   }
 
+  onAttemptLogin = event => {
+    event.preventDefault();
+    const { email, password } = this.state.user;
+    if (email.length > 0 && password.length > 0) {
+      this.props.login(this.state.user.email + this.state.user.password);
+    }
+  }
+
+  onEmailChange = event => {
+    const user = { ...this.state.user, email: event.target.value }
+    this.setState({
+      user
+    });
+  }
+  onPasswordChange = event => {
+    const user = { ...this.state.user, password: event.target.value }
+    this.setState({
+      user
+    });
+  }
+
   render() {
-    const {
-      authenticated,
-      login,
-      logout
-    } = this.props;
+    const { login } = this.props;
+    const { user, errors } = this.state;
 
     return (
-
       <div className="login-page">
         <LoginForm
-          onSubmit={login}
+          user={user}
+          errors={errors}
+          onEmailChange={this.onEmailChange}
+          onPasswordChange={this.onPasswordChange}
+          onSubmit={this.onAttemptLogin}
         />
       </div>
     );
@@ -37,8 +64,7 @@ class LoginPage extends React.Component {
 LoginPage.propTypes = {
   authenticated: PropTypes.bool.isRequired,
   userId: PropTypes.string.isRequired,
-  login: PropTypes.func.isRequired,
-  logout: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -47,5 +73,5 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, {
-  login, logout
+  login
 })(LoginPage);

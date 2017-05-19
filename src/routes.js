@@ -14,6 +14,6 @@ export default (
     <Route component={AuthenticatedContent}>
       <Route path="/admin" component={AdminPanel} />
     </Route>
-      <Route path="/login" component={Home} />
+      <Route path="/login" component={LoginPage} />
   </Route>
 );

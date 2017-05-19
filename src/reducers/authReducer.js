@@ -23,7 +23,6 @@ export default function authReducer(state = initialState, action) {
         authenticated: false
       })
     case types.REQUEST_LOGIN:
-      return null;
     default:
       return state;
   }
