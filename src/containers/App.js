@@ -1,14 +1,20 @@
 import React, { PropTypes } from 'react';
-// import Header from './common/Header';
+import { connect } from 'react-redux';
+import Snackbar from '../components/Snackbar';
 
 const App = ({ children }) => (
-  <div className="container-fluid">
+  <div className="app-container">
     {children}
+    <Snackbar />
   </div>
 )
 
+
 App.propTypes = {
-  children: PropTypes.shape.isRequired
+  children: PropTypes.object.isRequired
 };
 
-export default App
+
+
+export default App;
+

@@ -1,5 +1,5 @@
-# React/Redux/ES6/Webpack/Eslint -template
-This project contains a simple base for starting developing React apps using modern technologies and tools. I recommend using Visual Studio Code for development because it is awesome! 
+# Sami Nieminen's portfolio website
+Using [react-redux-base](https://github.com/niemisami/react-redux-base) repo as the base for the site.
 
 ## What? How?
 
