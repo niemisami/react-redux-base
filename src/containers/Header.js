@@ -8,20 +8,20 @@ const Header = ({ authenticated }) => (
         <div className="col-xs-4">
           <p className="header-title">Sami Nieminen</p>
         </div>
-        <div className="col-xs-6 col-sm-8 end-xs navigation">
+        <div className="col-xs-8 col-sm-8 end-xs navigation">
           <ul>
             <li><a href="/#about" className="nav-link">About</a></li>
             <li><a href="/#projects" className="nav-link">Projects</a></li>
             <li><a href="/#contacts" className="nav-link">Contacts</a></li>
+            <li>
+              {authenticated ?
+                <Link to="/logout" className="nav-link active">Logout</Link>
+                :
+                <Link to="/login" className="nav-link active">Login</Link>
+              }</li>
           </ul>
         </div>
-        <div className="col-xs-1">
-          {authenticated ?
-            <p><Link to="/logout">Logout</Link></p>
-            :
-            <p><Link to="/login">Login</Link></p>
-          }
-        </div>
+
       </div>
     </div>
   </div>

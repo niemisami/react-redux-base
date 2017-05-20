@@ -12,4 +12,3 @@ const toggleSnackbar = message => ({
   type: types.TOGGLE_SNACKBAR,
   snackbarMessage: message
 });
-

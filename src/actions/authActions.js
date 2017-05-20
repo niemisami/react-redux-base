@@ -1,6 +1,7 @@
 import cookie from 'react-cookie';
 import { browserHistory } from 'react-router';
 import * as types from './actionTypes';
+import { displaySnackbar } from './uiActions'
 
 export const hasUserAuthenticated = () => dispatch => {
   const userCookie = cookie.load('userId');
@@ -25,12 +26,13 @@ export const login = userId => dispatch => {
     userId: userId,
     userName: 'dummy'
   })
+  displaySnackbar('You have logged in!')(dispatch);
 }
 
 
 export const logout = () => dispatch => {
   cookie.remove('userId', { path: '/' });
-  browserHistory.push('/');
+  browserHistory.replace('/');
   dispatch({
     type: types.REQUEST_LOGOUT
   })

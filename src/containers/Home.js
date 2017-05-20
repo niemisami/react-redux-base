@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-// import Header from './common/Header';
 
 const Home = () => (
   <div className="row">

@@ -54,6 +54,8 @@ a {
                 padding: 1rem 0 1rem 0;
                 -webkit-margin-start: 1rem;
                 -webkit-margin-end: 1rem;
+                margin-left: 1rem;
+                margin-right: 1rem;
                 font-weight: 200;
                 border-bottom: 2px solid transparent;
                 -webkit-transition: 0.3s;
@@ -186,7 +188,6 @@ a {
     z-index: 1;
     left: 50%;
     bottom: 2rem;
-
     &.show {
         visibility: visible;
         -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;

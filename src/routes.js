@@ -15,7 +15,7 @@ export default (
     <Route component={AuthenticatedContent}>
       <Route path="/admin" component={AdminPanel} />
     </Route>
-      <Route path="/login" component={LoginPage} />
-      <Route path="/logout" component={Logout} />
+    <Route path="/login" component={LoginPage} />
+    <Route path="/logout" component={Logout} />
   </Route>
 );

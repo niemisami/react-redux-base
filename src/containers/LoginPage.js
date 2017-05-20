@@ -14,6 +14,7 @@ class LoginPage extends React.Component {
       errors: {}
     }
   }
+
   componentDidMount() {
     const { authenticated, userId } = this.props;
     if (authenticated) {
