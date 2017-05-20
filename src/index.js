@@ -8,12 +8,14 @@ import routes from './routes';
 import configureStore from './store/configureStore';
 import initialState from './reducers/initialState';
 import { hasUserAuthenticated } from './actions/authActions'
+import { fetchSiteContent } from './actions/contentActions';
 
 
 const store = configureStore(initialState);
 
 const history = syncHistoryWithStore(browserHistory, store);
 
+store.dispatch(fetchSiteContent());
 store.dispatch(hasUserAuthenticated());
 
 render(

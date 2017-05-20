@@ -1,26 +1,34 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 
-const Home = () => (
+const Home = ({ content }) => (
   <div className="row">
-    <div className="col-xs-12 site-content" id="about">
-      <div className="container">
-        <h1>Hello!</h1>
+    {content.map((contentRow, index) => (
+      <div key={index} className="col-xs-12 site-content" id={contentRow.title}>
+        <div className="container">
+          <h1>{contentRow.title}</h1>
+          <p>{contentRow.content}</p>
+        </div>
       </div>
-    </div>
-    <div className="col-xs-12 site-content" id="contacts">
-      <div className="container">
-        <h1>Hello!</h1>
-      </div>
-    </div>
-    <div className="col-xs-12 site-content" id="projects">
-      <div className="container">
-        <h1>Hello!</h1>
-      </div>
-    </div>
+    ))}
   </div>
 )
 
+Home.defaultProps = {
+  content: []
+}
+
 Home.propTypes = {
+  content: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired
+    })
+  )
 };
 
-export default Home
+const mapStateToProps = state => ({
+  content: state.content.siteContent.content
+});
+
+export default connect(mapStateToProps)(Home);
