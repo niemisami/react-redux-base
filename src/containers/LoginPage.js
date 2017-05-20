@@ -15,8 +15,7 @@ class LoginPage extends React.Component {
     }
   }
   componentDidMount() {
-    const { authenticated, userId } = this.props.authenticated;
-
+    const { authenticated, userId } = this.props;
     if (authenticated) {
       this.props.login(userId);
     }
@@ -44,7 +43,6 @@ class LoginPage extends React.Component {
   }
 
   render() {
-    const { login } = this.props;
     const { user, errors } = this.state;
 
     return (

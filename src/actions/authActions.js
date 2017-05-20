@@ -28,9 +28,9 @@ export const login = userId => dispatch => {
 }
 
 
-export const logout = () => (dispatch) => {
+export const logout = () => dispatch => {
   cookie.remove('userId', { path: '/' });
-  browserHistory.push('/login');
+  browserHistory.push('/');
   dispatch({
     type: types.REQUEST_LOGOUT
   })

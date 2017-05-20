@@ -5,6 +5,7 @@ import Home from './containers/Home';
 import AdminPanel from './containers/AdminPanel';
 import AuthenticatedContent from './containers/AuthenticatedContent';
 import LoginPage from './containers/LoginPage';
+import Logout from './containers/Logout';
 import SignupPage from './containers/SignupPage';
 
 
@@ -15,5 +16,6 @@ export default (
       <Route path="/admin" component={AdminPanel} />
     </Route>
       <Route path="/login" component={LoginPage} />
+      <Route path="/logout" component={Logout} />
   </Route>
 );

@@ -1,15 +1,26 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import Header from './Header';
 
-const App = ({ children }) => (
+const App = ({ children, authenticated }) => (
   <div className="app-container">
-    <Header />
+    <Header
+      authenticated={authenticated}
+    />
     {children}
   </div>
 )
 
 App.propTypes = {
-  children: PropTypes.object.isRequired
+  children: PropTypes.object.isRequired,
+  authenticated: PropTypes.bool.isRequired
 };
 
-export default App
+
+const mapStateToProps = state => ({
+  authenticated: state.auth.authenticated
+})
+
+
+export default connect(mapStateToProps)(App);
+

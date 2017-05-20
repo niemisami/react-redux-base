@@ -36,11 +36,9 @@ AuthenticatedContent.propTypes = {
   children: PropTypes.node.isRequired
 }
 
-function mapStateToProps(state, ownProps) {
-  return {
-    authenticated: state.auth.authenticated,
-    currentURL: ownProps.location.pathname
-  }
-}
+const mapStateToProps = (state, ownProps) => ({
+  authenticated: state.auth.authenticated,
+  currentURL: ownProps.location.pathname
+})
 
 export default connect(mapStateToProps)(AuthenticatedContent)

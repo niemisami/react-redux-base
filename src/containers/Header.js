@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-const Header = () => (
+const Header = ({ authenticated }) => (
   <div className="header">
     <div className="container">
       <div className="row between-xs top-xs">
@@ -10,17 +10,28 @@ const Header = () => (
         </div>
         <div className="col-xs-6 col-sm-8 end-xs navigation">
           <ul>
-            <li><a href="#about" className="nav-link">About</a></li>
-            <li><a href="#projects" className="nav-link">Projects</a></li>
-            <li><a href="#contacts" className="nav-link">Contacts</a></li>
+            <li><a href="/#about" className="nav-link">About</a></li>
+            <li><a href="/#projects" className="nav-link">Projects</a></li>
+            <li><a href="/#contacts" className="nav-link">Contacts</a></li>
           </ul>
         </div>
         <div className="col-xs-1">
-          <p><Link to="/login">Login</Link></p>
+          {authenticated ?
+            <p><Link to="/logout">Logout</Link></p>
+            :
+            <p><Link to="/login">Login</Link></p>
+          }
         </div>
       </div>
     </div>
   </div>
 )
+
+Header.defaultProps = {
+  authenticated: false
+}
+Header.propTypes = {
+  authenticated: PropTypes.bool
+}
 
 export default Header;

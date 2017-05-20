@@ -8,6 +8,7 @@ class LoginPage extends React.Component {
     const authenticated = this.props.authenticated;
     const userId = this.props.userId;
 
+
     if (authenticated) {
       this.props.login(userId);
     }
@@ -15,7 +16,6 @@ class LoginPage extends React.Component {
 
   render() {
     const {
-      authenticated,
       login,
       logout
   } = this.props;
