@@ -1,14 +1,13 @@
-import cookie from 'react-cookie';
 import { browserHistory } from 'react-router';
 import * as types from './actionTypes';
 import { displaySnackbar } from './uiActions'
 
 export const hasUserAuthenticated = () => dispatch => {
-  const userCookie = cookie.load('userId');
-  if (userCookie && typeof userCookie === 'string') {
+  const userStorage = localStorage.getItem('userId');
+  if (userStorage && typeof userStorage === 'string') {
     dispatch({
       type: types.LOGIN_SUCCESS,
-      userId: userCookie,
+      userId: userStorage,
       userName: 'dummy'
     })
   } else {
@@ -19,7 +18,7 @@ export const hasUserAuthenticated = () => dispatch => {
 }
 
 export const login = userId => dispatch => {
-  cookie.save('userId', userId, { path: '/' });
+  localStorage.setItem('userId', userId);
   browserHistory.replace('/');
   dispatch({
     type: types.LOGIN_SUCCESS,
@@ -31,7 +30,7 @@ export const login = userId => dispatch => {
 
 
 export const logout = () => dispatch => {
-  cookie.remove('userId', { path: '/' });
+  localStorage.removeItem('userId');
   browserHistory.replace('/');
   dispatch({
     type: types.REQUEST_LOGOUT
