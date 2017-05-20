@@ -16,13 +16,17 @@ const Header = ({ siteContent, authenticated, loaderVisible }) => (
         <div className="col-xs-8 col-sm-8 end-xs navigation">
           <ul>
             {siteContent.content.map((navItem, index) => (
-              <li key={index}><a href={'/#' + navItem.title} className="nav-link">{navItem.title}</a></li>
+              <li key={index}><a href={'/#' + navItem.title.toLowerCase()} className="nav-link">{navItem.title}</a></li>
             ))}
+            <li key="admin1">{
+              authenticated ?
+                <Link to="/admin" className="nav-link" activeClassName="active">Admin</Link> : ''
+            }</li>
             <li key="auth1">{
               authenticated ?
                 <Link to="/logout" className="nav-link active">Logout</Link>
                 :
-                <Link to="/login" className="nav-link active">Login</Link>
+                <Link to="/login" className="nav-link" activeClassName="active">Login</Link>
             }</li>
           </ul>
         </div>

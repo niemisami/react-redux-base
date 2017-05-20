@@ -151,15 +151,15 @@ a {
     .form button:hover,
     .form button:active,
     .form button:focus {
-        background: #43A047;
+        background: $accent-dark;
     }
     .form .message {
         margin: 1rem 0 0;
-        color: #b3b3b3;
+        color: $secondary-text;
         font-size: 0.8rem;
     }
     .form .message a {
-        color: #4CAF50;
+        color: $accent;
         text-decoration: none;
     }
     .form .register-form {
@@ -236,8 +236,9 @@ a {
 }
 
 #loader {
-    border: 0.5rem solid $background-medium;
-    border-top: 0.5rem solid $accent;
+    border: 0.3rem solid $background-medium;
+    border-top: 0.3rem solid $accent;
+    border-bottom: 0.3rem solid $accent;
     border-radius: 50%;
     width: 1.6rem;
     height: 1.6rem;
