@@ -1,21 +1,13 @@
-# React/Redux/ES6/Webpack/Eslint -template
-This project contains a simple base for starting developing React apps using modern technologies and tools. I recommend using Visual Studio Code for development because it is awesome! 
+# Sami Nieminen's portfolio website
+Using [react-redux-base](https://github.com/niemisami/react-redux-base) repo as the base for the site.
 
-## What? How?
-Ensure that [`npm`](https://docs.npmjs.com/getting-started/installing-node) is installed.
-```
-// Clone the repository:
-git clone https://github.com/niemisami/react-redux-base.git
-```
-```
-// Install dependencies
-npm install
-```
-```
-// Run
-npm start
-```
-```
-// Run without linter
-npm run run
-```
+#Updates:
+
+* 19.5. Client side authentication
+	- Login/logout action
+	- Store `userId`cookie in browser
+	- TODO: connect to the backend	
+* 20.5. Snackbar 
+  - Display short messages throughout the application to the user
+  - Snackbar's state is handled in `uiActions` and `uiReducer`
+  - `Snackbar` is defined in `app.js` and used in `containers/logout.js`

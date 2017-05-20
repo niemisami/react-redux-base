@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Header from './Header';
+import Snackbar from '../components/Snackbar';
 
 const App = ({ children, authenticated }) => (
   <div className="app-container">
@@ -8,6 +9,7 @@ const App = ({ children, authenticated }) => (
       authenticated={authenticated}
     />
     {children}
+    <Snackbar />
   </div>
 )
 

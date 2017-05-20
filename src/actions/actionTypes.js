@@ -4,3 +4,7 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const REQUEST_LOGOUT = 'REQUEST_LOGOUT';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+
+// UI
+export const TOGGLE_SNACKBAR = 'TOGGLE_SNACKBAR';
+

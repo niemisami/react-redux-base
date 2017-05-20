@@ -26,7 +26,7 @@ a {
 }
 
 .row {
-  margin: 0;
+    margin: 0;
 }
 
 .app-container {
@@ -72,12 +72,13 @@ a {
 }
 
 .site-content {
-  padding-top: 3rem;
-  height: 500px;
-  &:nth-child(even) {
-    background: $background-light;
-  }
+    padding-top: 3rem;
+    height: 500px;
+    &:nth-child(even) {
+        background: $background-light;
+    }
 }
+
 // Material
 .card {
     padding: 1rem;
@@ -161,5 +162,74 @@ a {
     }
     .form .register-form {
         display: none;
+    }
+}
+
+// SNACKBAR. Inspired by https://www.w3schools.com/howto/howto_js_snackbar.asp
+// to change the position of the snackbar change every bottom to right|left|top and 
+// from base left: 50% to match wanted position e.g. 
+//    bottom|top = left 
+//    right|left = top
+#snackbar {
+    visibility: hidden;
+    min-width: 16rem;
+    -webkit-margin-start: -8rem;
+    margin-left: -8rem;
+    background-color: $background-dark;
+    color: $light-text;
+    text-align: center;
+    -webkit-border-radius: 0.5em;
+    border-radius: 0.2em;
+    border: none;
+    padding: 1rem;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 2rem;
+
+    &.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+    @-webkit-keyframes fadein {
+        from {
+            bottom: 0;
+            opacity: 0;
+        }
+        to {
+            bottom: 30px;
+            opacity: 1;
+        }
+    }
+    @keyframes fadein {
+        from {
+            bottom: 0;
+            opacity: 0;
+        }
+        to {
+            bottom: 30px;
+            opacity: 1;
+        }
+    }
+    @-webkit-keyframes fadeout {
+        from {
+            bottom: 30px;
+            opacity: 1;
+        }
+        to {
+            bottom: 0;
+            opacity: 0;
+        }
+    }
+    @keyframes fadeout {
+        from {
+            bottom: 30px;
+            opacity: 1;
+        }
+        to {
+            bottom: 0;
+            opacity: 0;
+        }
     }
 }
