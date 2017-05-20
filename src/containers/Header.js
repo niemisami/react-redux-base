@@ -1,14 +1,17 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 
-const Header = ({ authenticated, siteContent }) => (
+const Header = ({ siteContent, authenticated, loaderVisible }) => (
   <div className="header">
     <div className="container">
       <div className="row between-xs top-xs">
         <div className="col-xs-4">
-          <p className="header-title">{siteContent.title}</p>
+          {loaderVisible ?
+            <div id="loader" />
+            :
+            <p className="header-title">{siteContent.title}</p>
+          }
         </div>
         <div className="col-xs-8 col-sm-8 end-xs navigation">
           <ul>
@@ -31,11 +34,11 @@ const Header = ({ authenticated, siteContent }) => (
 
 Header.defaultProps = {
   siteContent: {},
-  authenticated: false
+  authenticated: false,
+  loaderVisible: false
 }
 
 Header.propTypes = {
-  authenticated: PropTypes.bool,
   siteContent: PropTypes.shape({
     title: PropTypes.string.isRequired,
     content: PropTypes.arrayOf(
@@ -43,11 +46,9 @@ Header.propTypes = {
         title: PropTypes.string.isRequired
       })
     )
-  })
+  }),
+  authenticated: PropTypes.bool,
+  loaderVisible: PropTypes.bool
 };
 
-const mapStateToProps = state => ({
-  siteContent: state.content.siteContent
-});
-
-export default connect(mapStateToProps)(Header);
+export default Header;

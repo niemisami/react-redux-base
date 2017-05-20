@@ -7,6 +7,7 @@ export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
 // UI
 export const TOGGLE_SNACKBAR = 'TOGGLE_SNACKBAR';
+export const DISPLAY_LOADER = 'DISPLAY_LOADER';
 
 // Site content
 export const REQUEST_SITE_CONTENT = 'REQUEST_SITE_CONTENT';

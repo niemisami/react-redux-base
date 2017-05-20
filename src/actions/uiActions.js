@@ -12,3 +12,11 @@ const toggleSnackbar = message => ({
   type: types.TOGGLE_SNACKBAR,
   snackbarMessage: message
 });
+
+
+export const displayLoader = display => dispatch => {
+  dispatch({
+    type: types.DISPLAY_LOADER,
+    loaderVisible: display
+  });
+}
