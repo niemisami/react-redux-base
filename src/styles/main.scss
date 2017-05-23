@@ -273,3 +273,47 @@
       }
   }
   
+  // Dropdown menu
+  .dropbtn {
+      border: none;
+      cursor: pointer;
+  }
+  
+  .dropdown {
+      position: relative;
+      display: inline-block;
+      &:hover .dropdown-content {
+          display: block;
+      }
+      .dropdown-content {
+          position: absolute;
+          background-color: $background-light;
+          min-width: 100%;
+          box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2);
+          z-index: 1;
+          -webkit-margin-before: 1rem;
+          margin-top: 1rem;
+          right: -1rem;
+          border-top: 2px solid $secondary-text;
+          display: none;
+          a {
+              color: $secondary-text;
+              padding: 0.6rem 1rem;
+              text-decoration: none;
+              display: block;
+              -webkit-transition: 0.3s;
+              -moz-transition: 0.3s;
+              -o-transition: 0.3s;
+              transition: 0.3s;
+          }
+          a:hover {
+              background-color: $background-medium;
+              color: $primary-text;
+          }
+      }
+  }
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  
+  // .dropdown:hover .dropbtn {
+  //     background-color: $accent;
+  // }
