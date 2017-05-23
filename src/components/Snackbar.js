@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 //TODO: add position parameter which lets user decide where does the snackbar pop up
 
 const Snackbar = ({ displaySnackbar, snackbarMessage }) => (
-  <div id="snackbar" className={(displaySnackbar ? 'show' : '')}>{snackbarMessage}</div>
+  <div id="snackbar" className={(displaySnackbar && 'show')}>{snackbarMessage}</div>
 )
 
 Snackbar.defaultProps = {

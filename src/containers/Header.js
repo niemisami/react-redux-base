@@ -19,8 +19,8 @@ const Header = ({ siteContent, authenticated, loaderVisible }) => (
               <li key={index}><a href={'/#' + navItem.title.toLowerCase()} className="nav-link">{navItem.title}</a></li>
             ))}
             <li key="admin1">{
-              authenticated ?
-                <Link to="/admin" className="nav-link" activeClassName="active">Admin</Link> : ''
+              authenticated &&
+              <Link to="/admin" className="nav-link" activeClassName="active">Admin</Link>
             }</li>
             <li key="auth1">{
               authenticated ?

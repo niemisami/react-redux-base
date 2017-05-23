@@ -34,6 +34,20 @@ export const fetchSiteContent = () => dispatch => {
           title: 'Contacts',
           content: 'Check my GitHub!',
           order: 2
+        },
+        {
+          title: 'Markdown',
+          content: "## Emphasis\n" 
+          + "__This is bold text__\n\n"
+          + "*This is italic text*\n\n"
+          + "_This is italic text_\n\n"
+          + '- list\n'
+          + '\t      tabbed thing\n\n'
+          + "~~Deleted text~~\n\n"
+          + "Superscript: 19^th^\n\n"
+          + "Subscript: H~2~O\n\n"
+          ,
+          order: 3
         }
       ]
     };

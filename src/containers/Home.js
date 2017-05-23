@@ -6,8 +6,10 @@ const Home = ({ content }) => (
     {content.map((contentRow, index) => (
       <div key={index} className="col-xs-12 site-content" id={contentRow.title.toLowerCase()}>
         <div className="container">
-          <h1>{contentRow.title}</h1>
-          <p>{contentRow.content}</p>
+          <div className="col-xs-12">
+            <h1>{contentRow.title}</h1>
+            <p>{contentRow.content}</p>
+          </div>
         </div>
       </div>
     ))}
