@@ -333,8 +333,14 @@ a {
             position: absolute;
             right: 0;
             bottom: 0;
-            i {
-                color: $background-light;
+            button {
+                outline: none;
+                i {
+                    color: $background-light;
+                }
+            }
+            .tooltip-text {
+                cursor: pointer;
             }
         }
     }
