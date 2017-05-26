@@ -18,7 +18,7 @@ AuthBanner.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  userName: state.auth.userName
+  userName: state.auth.user.name
 })
 
 export default connect(mapStateToProps, {

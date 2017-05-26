@@ -4,11 +4,15 @@ import { displaySnackbar } from './uiActions'
 
 export const hasUserAuthenticated = () => dispatch => {
   const userStorage = localStorage.getItem('userId');
+  // TODO: fetch data from the server
   if (userStorage && typeof userStorage === 'string') {
     dispatch({
       type: types.LOGIN_SUCCESS,
-      userId: userStorage,
-      userName: 'dummy'
+      user: {
+        id: '1',
+        name: 'Sami Nieminen',
+        profilePicture: 'upcomingProfilePicturePath'
+      }
     })
   } else {
     dispatch({
@@ -22,8 +26,11 @@ export const login = userId => dispatch => {
   browserHistory.replace('/');
   dispatch({
     type: types.LOGIN_SUCCESS,
-    userId: userId,
-    userName: 'dummy'
+    user: {
+      id: '1',
+      name: 'Sami Nieminen',
+      profilePicture: 'upcomingProfilePicturePath'
+    }
   })
   displaySnackbar('You have logged in!')(dispatch);
 }

@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { Route } from 'react-router';
 import { login } from '../actions/authActions'
 import LoginForm from '../components/LoginForm';
 
@@ -16,9 +17,10 @@ class LoginPage extends React.Component {
   }
 
   componentDidMount() {
-    const { authenticated, userId } = this.props;
-    if (authenticated) {
-      this.props.login(userId);
+    const { authenticated, user } = this.props;
+    console.log(user.id);
+    if (authenticated && user.id) {
+      this.props.login(user.id);
     }
   }
 
@@ -62,13 +64,15 @@ class LoginPage extends React.Component {
 
 LoginPage.propTypes = {
   authenticated: PropTypes.bool.isRequired,
-  userId: PropTypes.string.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.string.isRequired
+  }).isRequired,
   login: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
   authenticated: state.auth.authenticated,
-  userId: state.auth.userId
+  user: state.auth.user
 })
 
 export default connect(mapStateToProps, {

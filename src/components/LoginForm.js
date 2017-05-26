@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
+
+// TODO: Display errors on form. E.g. invalid email
 const LoginForm = ({
   user,
   errors,
@@ -12,7 +14,7 @@ const LoginForm = ({
     <div className="form">
 
       <form className="login-form">
-        <input type="text" onChange={onEmailChange} value={user.email} placeholder="email" />
+        <input autoFocus type="text" onChange={onEmailChange} value={user.email} placeholder="email" />
         <input type="password" onChange={onPasswordChange} value={user.password} placeholder="password" />
         <button onClick={(e) => onSubmit(e)}>login</button>
         <p className="message">Not registered? <Link to="login" onClick={() => console.log('TODO: redirect')}> Create an account</Link></p>

@@ -1,8 +1,11 @@
 import * as types from '../actions/actionTypes';
 
 const initialState = {
-  userId: '',
-  userName: ',',
+  user: {
+    id: 'none',
+    name: '',
+    profilePicture: ''
+  },
   authenticated: false
 }
 
@@ -10,16 +13,21 @@ export default function authReducer(state = initialState, action) {
   switch (action.type) {
     case types.LOGIN_SUCCESS:
       return Object.assign({}, state, {
-        userId: action.userId,
-        userName: action.userName,
+        userId: 'none',
+        
+        user: action.user,
         authenticated: true
       })
     case types.LOGIN_FAIL:
     case types.REQUEST_LOGOUT:
     case types.LOGOUT_SUCCESS:
       return Object.assign({}, state, {
-        userId: '',
-        userName: '',
+        userId: 'none',
+        user: {
+          id: 'none',
+          name: '',
+          profilePicture: ''
+        },
         authenticated: false
       })
     case types.REQUEST_LOGIN:
