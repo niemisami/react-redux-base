@@ -6,15 +6,15 @@ const testMenuItems = [
   {
     id: 0,
     name: 'Profile',
-    redirect: '/admin/profile'
+    redirect: '/profile'
   }, {
     id: 1,
     name: 'CMS',
-    redirect: '/admin/cms'
+    redirect: '/cms'
   }, {
     id: 2,
     name: 'Statistics',
-    redirect: '/admin/stats'
+    redirect: '/stats'
   }
 ]
 

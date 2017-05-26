@@ -14,11 +14,10 @@ export default (
   <Route component={App}>
     <Route path="/" component={Home} />
     <Route component={AuthenticatedContent}>
-      <Route path="/admin" component={AdminPanel} >
-        <Route path="/admin/profile" component={Profile} />
-        <Route path="/admin/cms" component={AdminPanel} />
-        <Route path="/admin/stats" component={AdminPanel} />
-      </Route>
+      <Route path="/admin" component={AdminPanel} />
+      <Route path="/cms" component={AdminPanel} />
+      <Route path="/stats" component={AdminPanel} />
+      <Route path="/profile" component={Profile} />
     </Route>
     <Route path="/login" component={LoginPage} />
     <Route path="/logout" component={Logout} />
