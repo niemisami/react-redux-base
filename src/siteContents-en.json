@@ -1,16 +1,28 @@
 {
-    "displayFrontpage": true,
-    "bodyText": [
-        "Would you like to show off with your beer pong skills? How about winning a trip abroad to play beer pong?",
-        "Your dreams are coming true! In the autumn 2017 the biggest beer pong clubs in Finland, Aalto Beer Pong and Beer Pong Turku, will co-operate and arrange a Finnish Series of Beer Pong tournament. The main prize of the tournament will be a trip with accommodation to the next European Series of Beer Pong held in the beginning of 2018.",
-        "More information about the tournament and ticket sales coming during the spring, stay tuned!"
-    ],
-    "organizers": "Organizers",
-    "contacts": "Contacts",
-    "abpLink": "https://abp.ayy.fi/",
-    "bptLink": "https://www.facebook.com/BeerPongTurku/",
-    "contactInformation": "aaltobeerpong@gmail.com",
-    "contactInformationBpt": "beerpongturku@gmail.com",
-    "endDate": "April 14, 2017, 18:00 GMT+3",
-    "navItems": ["Frontpage"]
+  "displayFrontpage": true,
+  "bodyText": [
+    "Would you like to show off with your beer pong skills? How about winning a trip abroad to play beer pong?",
+    "Your dreams are coming true! In the autumn 2017 the biggest beer pong clubs in Finland, Aalto Beer Pong and Beer Pong Turku, will co-operate and arrange a Finnish Series of Beer Pong tournament. The main prize of the tournament will be a trip with accommodation to the next European Series of Beer Pong held in the beginning of 2018.",
+    "More information about the tournament and ticket sales coming during the spring, stay tuned!"
+  ],
+  "organizers": "Organizers",
+  "contacts": "Contacts",
+  "abpLink": "https://abp.ayy.fi/",
+  "bptLink": "https://www.facebook.com/BeerPongTurku/",
+  "contactInformation": "info@fsobp.com",
+  "endDate": "April 14, 2017, 18:00 GMT+3",
+  "navItems": [
+    {
+      "text": "Home",
+      "location": "/"
+    },
+    {
+      "text": "Event",
+      "location": "/event"
+    },
+    {
+      "text": "Contacts",
+      "location": "/contacts"
+    }
+  ]
 }

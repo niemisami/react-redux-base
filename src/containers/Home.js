@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 import Header from './Header';
 import Footer from './Footer';
 import siteContents from '../siteContents-fi.json';
@@ -7,13 +8,13 @@ import siteContentsEn from '../siteContents-en.json';
 
 const languages = [
   {
-    text: "Suomi",
-    countryCode: "fi",
+    text: 'FI',
+    countryCode: 'fi',
     isSelected: true
   },
   {
-    text: "English",
-    countryCode: "en",
+    text: 'EN',
+    countryCode: 'en',
     isSelected: false
   }
 ]
@@ -54,14 +55,16 @@ class Home extends React.Component {
 
   onLanguageChanged = (language) => {
     let translate = false;
-    if (language.countryCode === "en") {
+    if (language.countryCode === 'en') {
       translate = true;
     }
 
     const newLanguages = languages.map(lang => {
       if (lang.countryCode === language.countryCode) {
+        lang.isSelected = true;
         return lang;
       } else {
+        lang.isSelected = false;
         return lang;
       }
     })
@@ -85,23 +88,20 @@ class Home extends React.Component {
 
     const mainPage =
       <div className="page-wrapper container-fluid text-center line-height-high">
-        <div className="row margin-clear content" >
-          <div className="col-sm-2 col-md-3">
-          </div>
-          <div className="col-sm-8 col-md-6 text-left">
-
-            <a href="#"><img className="img img-responsive margin-auto margin-2" alt="FSOBP" src="public/images/fsobp_logo_border_500.png" /></a>
-            <h1 className="text-center margin-2">Finnish Series of Beer Pong 2017</h1>
+        <div className="row center-xs" >
+          <div className="col-sm-8 col-md-6">
+            <Link to="/"><img className="img img-responsive margin-auto margin-2" alt="FSOBP" src="public/images/fsobp_logo_border_500.png" /></Link>
+            <h1 className="text-center margin-1">Finnish Series of Beer Pong 2017</h1>
             {bodyText.map((paragraph, index) => (
               <div
-                key={index}>
+                key={index}
+                className="text-left">
                 <p>{paragraph}</p>
-                {index === bodyText.length - 1 ? "" : <hr />}
+                {index === bodyText.length - 1 ? '' : <hr />}
               </div>
             ))}
-            <div className="row margin-clear">
+            <div className="row center-xs margin-top-2">
               <div className="text-center">
-
                 <h3 className="title">{organizers}</h3>
                 <div className="flex-container">
                   {/*Aalto Beer Pong*/}

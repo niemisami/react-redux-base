@@ -93,7 +93,7 @@ function handleRender(req, res) {
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
-      const title = 'Niemisami template'
+      const title = 'FSOBP|2017'
       res.send(indexTemplate({
         title: title
       }));
