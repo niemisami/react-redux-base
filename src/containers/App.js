@@ -9,12 +9,9 @@ const App = ({ children }) => (
   </div>
 )
 
-
 App.propTypes = {
-  children: PropTypes.object.isRequired
+  children: PropTypes.node.isRequired
 };
-
-
 
 export default App;
 

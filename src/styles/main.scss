@@ -2,221 +2,277 @@
 @import '~flexboxgrid';
 @import 'general';
 @import 'variables';
-
-body {
-    background: #f1f1f1;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(right, #f1f1f1, #d2d2d2);
-    background: -moz-linear-gradient(right, #f1f1f1, #d2d2d2);
-    background: -o-linear-gradient(right, #f1f1f1, #d2d2d2);
-    background: linear-gradient(to left, #f1f1f1, #d2d2d2);
-    background: #f1f1f1;
-}
-
-h1 {
-    color: $primary-text;
-}
-
-a {
-    text-decoration: none;
-    color: $primary-text;
+.full-height {
+    height: 100%;
 }
 
 #app {
     height: 100%;
-    width: 100%;
 }
 
-.row {
+.body-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.timer-container {
+    background-color: #18447e;
+}
+
+.timer-container p.timer {
+    color: #f1f1f1;
+    font-size: 10em;
+}
+
+@media screen and (max-width: 600px) {
+    .timer-container p.timer {
+        font-size: 5em;
+    }
+}
+
+.page-wrapper {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding: 3em 0 3em 0;
+}
+
+.sticky-footer {
+    width: 100%;
+    background-color: #e50015;
+    color: #f1f1f1;
+}
+
+.mail-link {
+    color: #f1f1f1;
+}
+
+.mail-link:hover,
+.mail-link:active,
+.mail-linkfocus {
+    color: #e1e1e1;
+}
+
+.navbar-fsobp {
+    background-color: #18447e;
+}
+
+.navbar-fsobp div.nav-container {
+    height: 100%;
+    -webkit-align-self: flex-end;
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+    -ms-flex-wrap: none;
+    flex-wrap: none;
+}
+
+.navbar-fsobp div.nav-container ul {
+    margin: 0 2em 0 2em;
+}
+
+.navbar-fsobp div.nav-container ul li {
+    text-align: center;
+    padding: 0;
+}
+
+.navbar-fsobp div.nav-container ul li a {
+    font-size: 1.2em;
+    padding: 1em 2em 1em 2em;
+    color: #d1d1d1;
+    text-decoration: none;
+}
+
+.navbar-fsobp div.nav-container ul li a:hover {
+    color: #e1e1e1;
+    background-color: transparent;
+}
+
+.navbar-fsobp div.nav-container ul li a:focus,
+.navbar-fsobp div.nav-container ul li a:active {
+    color: #f1f1f1;
+    background-color: transparent;
+}
+
+.navbar-fsobp div.nav-container ul li a.active {
+    color: #f1f1f1;
+    background-color: transparent;
+    box-shadow: inset 0px -3px 0px 0px #f1f1f1;
+}
+
+@media screen and (max-width: 360px) {
+    .navbar-fsobp div.nav-container ul li a {
+        width: 160px;
+    }
+}
+
+.navbar-fsobp p.language {
+    padding: 1rem;
+    display: inline-block;
+    color: #b6b6b6;
+    cursor: pointer;
+}
+
+.navbar-fsobp p.language.active {
+    color: #f1f1f1;
+}
+
+.container {
+    width: auto;
+    padding: 0 15px;
+}
+
+.flex-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.flex-column {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.line-height-high {
+    line-height: 200%;
+}
+
+.margin-clear {
     margin: 0;
 }
 
-.app-container {
-    height: 100%;
-    width: 100%;
-    background: transparent;
+.margin-auto {
+    margin: 0 auto;
 }
 
-// HEADER
-.header {
-    background: $background-light;
-    letter-spacing: 0.2rem;
-    padding-top: 1rem;
-    p.header-title {
-        color: $primary-text;
-        padding: 1rem;
-        font-weight: 200;
-    }
-    ul {
-        list-style: none;
-        li {
-            display: inline-block;
-            .nav-link {
-                color: $secondary-text;
-                padding: 1rem 0 1rem 0;
-                -webkit-margin-start: 1rem;
-                -webkit-margin-end: 1rem;
-                font-weight: 200;
-                border-bottom: 2px solid transparent;
-                -webkit-transition: 0.3s;
-                -moz-transition: 0.3s;
-                -o-transition: 0.3s;
-                transition: 0.3s;
-                display: block;
-                &.active,
-                &:hover {
-                    color: $primary-text;
-                    border-color: $secondary-text;
-                }
-            }
-        }
-    }
+.margin-top-20 {
+    margin-top: 20px;
 }
 
-.site-content {
-    padding-top: 3rem;
-    height: 500px;
-    &:nth-child(even) {
-        background: $background-light;
-    }
+.margin-20 {
+    margin: 20px;
 }
 
-// Material
-.card {
-    padding: 1rem;
-    font-size: 1em;
-    -webkit-border-radius: 0.5em;
-    border-radius: 0.2em;
-    border: none;
-    -webkit-box-shadow: 0rem, 0.2rem, 0.3rem, 0.1rem rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0rem, 0.2rem, 0.3rem, 0.1rem rgba(0, 0, 0, 0.3);
-    box-shadow: 0rem, 0.2rem, 0.3rem, 0.1rem rgba(0, 0, 0, 0.3);
-    background-color: #fdfdfd;
+.margin-1 {
+    margin: 1em;
 }
 
-.login-page {
-    width: 360px;
-    padding: 8% 0 0;
-    margin: auto;
-    .form {
-        position: relative;
-        z-index: 1;
-        background: #FFFFFF;
-        max-width: 360px;
-        margin: 0 auto 100px;
-        padding: 45px;
-        text-align: center;
-        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    }
-    .form input {
-        font-family: "Roboto", sans-serif;
-        outline: 0;
-        background: #f2f2f2;
-        width: 100%;
-        border: 0;
-        margin: 0 0 15px;
-        padding: 15px;
-        box-sizing: border-box;
-        font-size: 14px;
-    }
-    .form button {
-        font-family: "Roboto", sans-serif;
-        text-transform: uppercase;
-        outline: 0;
-        background: #4CAF50;
-        width: 100%;
-        border: 0;
-        padding: 15px;
-        color: #FFFFFF;
-        font-size: 14px;
-        -webkit-transition: all 0.3 ease;
-        transition: all 0.3 ease;
-        cursor: pointer;
-    }
-    .form button:hover,
-    .form button:active,
-    .form button:focus {
-        background: #43A047;
-    }
-    .form .message {
-        margin: 15px 0 0;
-        color: #b3b3b3;
-        font-size: 12px;
-    }
-    .form .message a {
-        color: #4CAF50;
-        text-decoration: none;
-    }
-    .form .register-form {
-        display: none;
-    }
+.padding-2 {
+    padding: 2em;
 }
 
-// SNACKBAR. Inspired by https://www.w3schools.com/howto/howto_js_snackbar.asp
-// to change the position of the snackbar change every bottom to right|left|top and 
-// from base left: 50% to match wanted position e.g. 
-//    bottom|top = left 
-//    right|left = top
-#snackbar {
-    visibility: hidden;
-    min-width: 16rem;
-    -webkit-margin-start: -8rem;
-    margin-left: -8rem;
-    background-color: $background-dark;
-    color: $light-text;
+.align-bottom-parent {
+    position: relative;
+}
+
+.align-bottom {
+    position: absolute;
+    bottom: 0;
+}
+
+
+/* Underline Reveal */
+
+.hvr-underline-reveal {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.hvr-underline-reveal:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #f1f1f1;
+    height: 3px;
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+}
+
+.hvr-underline-reveal:hover:before,
+.hvr-underline-reveal:focus:before,
+.hvr-underline-reveal:active:before {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.text-center {
     text-align: center;
-    -webkit-border-radius: 0.5em;
-    border-radius: 0.2em;
-    border: none;
-    padding: 1rem;
-    position: fixed;
-    z-index: 1;
-    left: 50%;
-    bottom: 2rem;
+}
 
-    &.show {
-        visibility: visible;
-        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-        animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    }
-    @-webkit-keyframes fadein {
-        from {
-            bottom: 0;
-            opacity: 0;
-        }
-        to {
-            bottom: 30px;
-            opacity: 1;
-        }
-    }
-    @keyframes fadein {
-        from {
-            bottom: 0;
-            opacity: 0;
-        }
-        to {
-            bottom: 30px;
-            opacity: 1;
-        }
-    }
-    @-webkit-keyframes fadeout {
-        from {
-            bottom: 30px;
-            opacity: 1;
-        }
-        to {
-            bottom: 0;
-            opacity: 0;
-        }
-    }
-    @keyframes fadeout {
-        from {
-            bottom: 30px;
-            opacity: 1;
-        }
-        to {
-            bottom: 0;
-            opacity: 0;
-        }
-    }
+.bp-images {
+    max-width: 10em;
+    display: block;
+    margin: auto;
+    margin-top: 2em;
+    max-height: 15em;
+}
+
+#table {
+    height: 20em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    -moz-box-wrap: nowrap;
+    -webkit-box-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+    -ms-flexbox-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
+
+#table #cup {
+    height: 0;
+    width: 8em;
+    border-bottom: 8em solid #f1f1f1;
+    border-left: 2em solid transparent;
+    border-right: 2em solid transparent;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+}
+
+#table #ball {
+    width: 3em;
+    height: 3em;
+    background: #f1f1f1;
+    border-radius: 1.5em;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
 }
