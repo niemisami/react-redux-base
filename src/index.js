@@ -1,24 +1,28 @@
-/*eslint-disable import/default */
+import 'babel-polyfill';
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
-import routes from './routes';
-import configureStore from './store/configureStore';
-import initialState from './reducers/initialState';
-import { hasUserAuthenticated } from './actions/authActions'
+global.Promise = require("bluebird")
+import configureStore from './configureStore';
+import App from './App';
 
 
-const store = configureStore(initialState);
+const store = configureStore();
+const root = document.getElementById('app');
+const render = () => {
+  const comp = (
+    <Provider store={store}>
+      <AppContainer>
+        <App />
+      </AppContainer>
+    </Provider>
+  );
+  ReactDOM.render(comp, root);
+};
 
-const history = syncHistoryWithStore(browserHistory, store);
+render();
 
-store.dispatch(hasUserAuthenticated());
-
-render(
-  <Provider store={store}>
-    <Router history={history} routes={routes} />
-  </Provider>,
-  document.getElementById('app')
-);
+if (module.hot) {
+  module.hot.accept('./App', render);
+}

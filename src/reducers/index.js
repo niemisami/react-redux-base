@@ -1,14 +1,19 @@
+import React from 'react';
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
-import auth, * as fromAuth from './authReducer';
-import ui from './uiReducer';
 
-const rootReducer = combineReducers(
-  {
-    auth,
-    ui,
-    routing: routerReducer
-  }
-);
+const reducer = (state = { text: 'Initial value' }, action) => {
+    switch (action) {
+        case 'ADD_DATA':
+            return {
+                text: action.text
+            }
+        default:
+            return state;
+    }
+}
 
-export default rootReducer;
+const appReducer = combineReducers({
+    reducer
+});
+
+export default appReducer;

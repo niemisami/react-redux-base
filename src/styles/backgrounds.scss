@@ -1,0 +1,16 @@
+
+.bg-red {
+    background: $app-red;
+    color: $app-light;
+    background-position: 5vw 5vw;
+    background-repeat: no-repeat;
+    background-size: 25%;
+}
+
+.half-screen {
+    position: fixed;
+    bottom: 0;
+    height: 50vh;
+    width: 100vw;
+    overflow: hidden;
+}

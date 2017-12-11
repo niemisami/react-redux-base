@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Advent Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Advent Pro Regular'),
+  local('AdventPro-Regular'),
+  url('../fonts/AdventPro-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Advent Pro';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Advent Pro Italic'),
+  local('AdventPro-Italic'),
+  url('../fonts/AdventPro-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Advent Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Advent Pro Bold'),
+  local('AdventPro-Bold'),
+  url('../fonts/AdventPro-Bold.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Advent Pro';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Advent Pro Bold Italic'),
+  local('AdventPro-BoldItalic'),
+  url('../fonts/AdventPro-Regular.ttf') format('ttf');
+}
