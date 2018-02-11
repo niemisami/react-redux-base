@@ -6,6 +6,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 const isProd = process.env.NODE_ENV === 'production';
+const PORT = process.env.PORT || 3000;
 // Development css works with hot module replacement which is not compatible with ExtractTextPlugin()
 const cssDev = [
   'style-loader',
@@ -29,10 +30,11 @@ module.exports = {
     'react-hot-loader/patch',
     path.resolve(__dirname, 'src', 'index.js')
   ],
-  devtool: isProd ? null : 'inline-source-map',
+  devtool: isProd ? 'eval' : 'source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'app.bundle.js'
+    filename: 'app.bundle.js',
+    publicPath: '/'
   },
   target: 'web',
   module: {
@@ -63,8 +65,9 @@ module.exports = {
     publicPath: '/',
     contentBase: path.join(__dirname, 'src'),
     compress: false, // use in prod
-    port: 3000,
+    port: PORT,
     stats: 'errors-only',
+    hot: true,
     historyApiFallback: true
   },
   plugins: [
@@ -76,8 +79,8 @@ module.exports = {
       hash: isProd, // use in prod
       template: path.join(__dirname, 'src', 'index.html')
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin({
       filename: "styles.css",
       disable: !isProd,
